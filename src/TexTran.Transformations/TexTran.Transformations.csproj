@@ -21,10 +21,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TransformService.cs</LastGenOutput>
     </None>
-    <None Update="TransformManager.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TransformManager.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -51,11 +47,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>TransformService.tt</DependentUpon>
-    </Compile>
-    <Compile Update="TransformManager.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>TransformManager.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
