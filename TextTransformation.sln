@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Transformations", "src\TexTran.Service\TexTran.Transformations.csproj", "{9B99DDAB-207A-49E5-99B4-10FCE01D286B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Transformations", "src\TexTran.Transformations\TexTran.Transformations.csproj", "{9B99DDAB-207A-49E5-99B4-10FCE01D286B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Data.Access", "src\TexTran.Data.Access\TexTran.Data.Access.csproj", "{EFFF8586-45CA-4AE9-A96D-5F021359BB8E}"
 EndProject
