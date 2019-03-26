@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextTran.Data.Access", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Host", "src\TexTran.Host\TexTran.Host.csproj", "{E63CCC98-85DC-45B7-8795-1CAB78FEEB27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexTran.Data.Abstractions", "TexTran.Data.Abstractions\TexTran.Data.Abstractions.csproj", "{7D844234-E1E0-46E9-A079-2B4D6E0AA432}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexTran.Data.Abstractions", "src\TexTran.Data.Abstractions\TexTran.Data.Abstractions.csproj", "{7D844234-E1E0-46E9-A079-2B4D6E0AA432}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
