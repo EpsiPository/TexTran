@@ -6,7 +6,7 @@ namespace TextTran.Data.Access.Context
 {
 	public class TextTranContext : DbContext
 	{
-		public TextTranContext(DbContextOptions options) : base(options) { }
+		public TextTranContext(DbContextOptions options) : base(options) {{ }}
 
 		public DbSet<Order> Orders { get; set; }
 		public DbSet<Product> Products { get; set; }
