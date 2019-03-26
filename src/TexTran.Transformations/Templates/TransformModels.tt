@@ -17,22 +17,4 @@ public class EnumConstantDefinition
 	public string Value { get; set; }
 }
 
-public class ModelDefinition
-{
-	public string Name { get; set; }
-	public PropertyDefinition[] Properties { get; set; }
-}
-
-public class PropertyDefinition
-{
-	public PropertyDefinition(string name, string type)
-	{
-		Name = name;
-		Type = type;
-	}
-
-	public string Name { get; set; }
-	public string Type { get; set; }
-}
-
 #>
