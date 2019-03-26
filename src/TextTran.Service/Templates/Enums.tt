@@ -6,14 +6,14 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ include file="Utils.tt" #>
+<#@ include file="TransformService.tt" #>
 
 /////////////////////////////////////////////////////////////////////
 //This code is auto-generated. Changes to this file will be lost! //
 /////////////////////////////////////////////////////////////////////
 using System;
 
-namespace TextTransformation.TextTransformation.Enums
+namespace TextTran.Transformations.Enums
 {
 <#
 string path = this.Host.ResolvePath(@"..\Definitions\Enums.txt");

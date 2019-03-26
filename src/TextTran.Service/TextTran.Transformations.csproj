@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="Templates\Entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Entities.cs</LastGenOutput>
+    </None>
     <None Update="Templates\Enums.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Enums.cs</LastGenOutput>
@@ -13,13 +17,13 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Models.cs</LastGenOutput>
     </None>
-    <None Update="Templates\Classes.tt">
+    <None Update="Templates\TransformModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Classes.cs</LastGenOutput>
+      <LastGenOutput>TransformModels.cs</LastGenOutput>
     </None>
-    <None Update="Templates\Utils.tt">
+    <None Update="Templates\TransformService.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Utils.cs</LastGenOutput>
+      <LastGenOutput>TransformService.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -28,6 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Templates\Entities.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Update="Templates\Enums.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -38,15 +47,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
-    <Compile Update="Templates\Classes.cs">
+    <Compile Update="Templates\TransformModels.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Classes.tt</DependentUpon>
+      <DependentUpon>TransformModels.tt</DependentUpon>
     </Compile>
-    <Compile Update="Templates\Utils.cs">
+    <Compile Update="Templates\TransformService.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Utils.tt</DependentUpon>
+      <DependentUpon>TransformService.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

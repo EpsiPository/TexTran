@@ -4,9 +4,14 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.IO" #>
-<#@ include file="Classes.tt" #>
+<#@ include file="TransformModels.tt" #>
 
 <#+ 
+public void RemoveFilesFromFolder(string path)
+{
+	Array.ForEach(Directory.GetFiles(path), File.Delete);
+}
+
 public List<ModelDefinition> GenerateModels(string[] lines)
 {
 	List<ModelDefinition> result = new List<ModelDefinition>();
@@ -21,9 +26,12 @@ public List<ModelDefinition> GenerateModels(string[] lines)
 
 		if(!match.Success)
 		{
-			var model = new ModelDefinition();
-			model.Name = line;
-			model.Properties = GetProperties(lineNumber, lines);
+			var model = new ModelDefinition
+			{
+				Name = line,
+				Properties = GetProperties(lineNumber, lines)
+			};
+
 			result.Add(model);
 		}
 	}
@@ -40,7 +48,7 @@ public PropertyDefinition[] GetProperties(int lineNumber, string[] lines)
 
 		if (match.Success)
 		{
-				properties.Add(new PropertyDefinition(match.Groups["type"].Value, match.Groups["name"].Value ));
+				properties.Add(new PropertyDefinition(match.Groups["name"].Value, match.Groups["type"].Value ));
 		}
 		else
 		{
@@ -64,9 +72,12 @@ public List<EnumDefinition> GenerateEnums(string[] lines)
 
 		if(!match.Success)
 		{
-			var enumDefinition = new EnumDefinition();
-			enumDefinition.Name = line;
-			enumDefinition.Constants = GetConstants(lineNumber, lines);
+			var enumDefinition = new EnumDefinition
+			{
+				Name = line,
+				Constants = GetConstants(lineNumber, lines)
+			};
+
 			result.Add(enumDefinition);
 		}
 	}

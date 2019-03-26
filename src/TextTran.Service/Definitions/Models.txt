@@ -2,7 +2,3 @@
 	Id:Guid
 	Name:string
 	Email:string
-
-Role
-	Id:Guid
-	Name:string

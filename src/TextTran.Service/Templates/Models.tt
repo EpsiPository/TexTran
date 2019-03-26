@@ -6,12 +6,13 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ include file="Utils.tt" #>
+<#@ include file="TransformService.tt" #>
 /////////////////////////////////////////////////////////////////////
 //This code is auto-generated. Changes to this file will be lost! //
 /////////////////////////////////////////////////////////////////////
 using System;
-namespace TextTransformation.TextTransformation.Models
+
+namespace TextTran.Transformations.Models
 {
 <#
 string path = this.Host.ResolvePath(@"..\Definitions\Models.txt");
@@ -27,7 +28,7 @@ foreach (var model in models)
 	foreach (var property in model.Properties)
 	{
 #>
-		public <#= property.Name #> <#= property.Type #> { get; set; }
+		public <#= property.Type #> <#= property.Name #> { get; set; }
 
 <# 
 	}

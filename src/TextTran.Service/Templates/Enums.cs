@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////////////////////////
 using System;
 
-namespace TextTransformation.TextTransformation.Enums
+namespace TextTran.Transformations.Enums
 {
 
 	public enum Gender
