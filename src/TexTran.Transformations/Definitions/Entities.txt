@@ -15,4 +15,3 @@ Order
 	Id:Guid
 	Products:List<Product>
 	Price:decimal
-

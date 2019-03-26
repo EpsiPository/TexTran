@@ -1,5 +1,7 @@
+// This code is auto generated. Changes to this file will be lost!
 using Microsoft.EntityFrameworkCore;
 using TexTran.Data.Abstractions.Entities;
+
 namespace TextTran.Data.Access.Context
 {
 	public class TextTranContext : DbContext
