@@ -13,8 +13,8 @@
 ///////////////////////////////////////////////////////////////////////////
 
 <#
-/* TODO: Get path */
-var entitiesFolder = @"C:\Users\Tim Maes\source\repos\TextTransformation\Textran.Data.Abstractions\Entities\";
+var directory = Path.GetDirectoryName(this.Host.TemplateFile);
+var entitiesFolder = Regex.Replace(directory, "(?<=src).+$", @"\TextTran.Data.Abstractions\Entities");
 
 
 /* Load definitions */
@@ -24,8 +24,6 @@ var lines = File.ReadLines(entities).ToArray();
 
 
 /* Clear Entities folder */
-
-RemoveFilesFromFolder(entitiesFolder);
 
 
 /* Generate Models */
@@ -52,13 +50,13 @@ foreach (var model in models)
 
 	/* Write to Entities folder */
 
-	using (FileStream fs = new FileStream(Path.Combine(entitiesFolder, model.Name + ".cs"), FileMode.Create))
+	/*using (FileStream fs = new FileStream(Path.Combine(entitiesFolder, model.Name + ".cs"), FileMode.Create))
     {
         using (StreamWriter str = new StreamWriter(fs))
         {
             str.WriteLine(builder.ToString());
             str.Flush();
         }
-    }
+    }*/
 }
 #>
