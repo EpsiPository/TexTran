@@ -1,6 +1,6 @@
 # TexTran
 
-TexTran is a project that contains text transformation templates to generate classes from simple definitions.
+TexTran is a project that contains text transformation templates to generate classes from simple definitions. I started this project to discover what T4 has to offer.
 
 Currently supported: 
 - Entities
@@ -8,7 +8,7 @@ Currently supported:
 - Enums
 
 .NET Core 2.2 +
-AutoT4 1.2.2 Extension
+AutoT4 1.2.2
 
 # Usage
 
@@ -55,5 +55,3 @@ namespace TexTran.Data.Abstractions.Entities
 }
 ```
 After adding more content to the definitions, just run `Build > Transform all T4 templates` to re-generate all code.
-
-
