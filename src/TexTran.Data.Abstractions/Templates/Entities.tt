@@ -22,7 +22,7 @@ List<EntityDefinition> entities = GenerateEntities(lines);
 foreach (var entity in entities)
 {
 	var builder = new StringBuilder();
-	builder.AppendLine(@"//This file is auto generated. Changes to these files will be lost!
+	builder.AppendLine(@"// This file is auto generated. Changes to these files will be lost!
 	using System;
 	using System.Collections.Generic;
 	
