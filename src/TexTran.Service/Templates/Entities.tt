@@ -16,19 +16,14 @@
 var directory = Path.GetDirectoryName(this.Host.TemplateFile);
 var entitiesFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
 
-
 /* Load definitions */
-
 string entities = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
 var lines = File.ReadLines(entities).ToArray();
 
-
 /* Clear Entities folder */
-
 RemoveFilesFromFolder(entitiesFolder);
 
 /* Generate Models */
-
 List<ModelDefinition> models = GenerateModels(lines); 
 
 foreach (var model in models)
@@ -50,14 +45,6 @@ foreach (var model in models)
 	builder.AppendLine("}");
 
 	/* Write to Entities folder */
-
-	using (FileStream fs = new FileStream(Path.Combine(entitiesFolder, model.Name + ".cs"), FileMode.Create))
-    {
-        using (StreamWriter str = new StreamWriter(fs))
-        {
-            str.WriteLine(builder.ToString());
-            str.Flush();
-        }
-    }
+	WriteToDirectory(entitiesFolder, model.Name, builder.ToString());
 }
 #>

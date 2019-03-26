@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextTran.Transformations", "src\TextTran.Service\TextTran.Transformations.csproj", "{9B99DDAB-207A-49E5-99B4-10FCE01D286B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Transformations", "src\TexTran.Service\TexTran.Transformations.csproj", "{9B99DDAB-207A-49E5-99B4-10FCE01D286B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextTran.Data.Access", "src\TextTran.Data.Access\TextTran.Data.Access.csproj", "{EFFF8586-45CA-4AE9-A96D-5F021359BB8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Data.Access", "src\TexTran.Data.Access\TexTran.Data.Access.csproj", "{EFFF8586-45CA-4AE9-A96D-5F021359BB8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Host", "src\TexTran.Host\TexTran.Host.csproj", "{E63CCC98-85DC-45B7-8795-1CAB78FEEB27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexTran.Data.Abstractions", "src\TexTran.Data.Abstractions\TexTran.Data.Abstractions.csproj", "{7D844234-E1E0-46E9-A079-2B4D6E0AA432}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Data.Abstractions", "src\TexTran.Data.Abstractions\TexTran.Data.Abstractions.csproj", "{7D844234-E1E0-46E9-A079-2B4D6E0AA432}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="Templates\DbContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbContext.cs</LastGenOutput>
+    </None>
     <None Update="Templates\Entities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Entities.cs</LastGenOutput>
@@ -32,6 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Templates\DbContext.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
     <Compile Update="Templates\Entities.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
