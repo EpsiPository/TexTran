@@ -5,17 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Templates\Models.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Templates\Models.tt" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Templates\Enums.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Enums.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Models.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Models.cs</LastGenOutput>
     </None>
     <None Update="Templates\TransformModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -24,6 +20,10 @@
     <None Update="Templates\TransformService.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TransformService.cs</LastGenOutput>
+    </None>
+    <None Update="TransformManager.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TransformManager.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -37,6 +37,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Enums.tt</DependentUpon>
     </Compile>
+    <Compile Update="Templates\Models.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Update="Templates\TransformModels.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -46,6 +51,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>TransformService.tt</DependentUpon>
+    </Compile>
+    <Compile Update="TransformManager.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TransformManager.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

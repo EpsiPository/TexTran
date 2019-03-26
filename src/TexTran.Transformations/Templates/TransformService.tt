@@ -8,8 +8,6 @@
 
 <#+ 
 
-
-
 public List<EnumDefinition> GenerateEnums(string[] lines)
 {
 	List<EnumDefinition> result = new List<EnumDefinition>();

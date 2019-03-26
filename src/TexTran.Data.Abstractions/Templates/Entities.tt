@@ -1,42 +1,36 @@
 ﻿<#@ template hostspecific="true" language="C#" #>
-<#@ output extension=".cs" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
-
-///////////////////////////////////////////////////////////////////////////
-//Generated entities are saved in Textran.Data.Abstractions.Models       //
-///////////////////////////////////////////////////////////////////////////
-
 <#
 var directory = Path.GetDirectoryName(this.Host.TemplateFile);
 var entitiesFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
 
 /* Load definitions */
-string entities = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
-var lines = File.ReadLines(entities).ToArray();
+var definition = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
+var lines = File.ReadLines(definition).ToArray();
 
 /* Clear Entities folder */
 RemoveFilesFromFolder(entitiesFolder);
 
-/* Generate Models */
-List<ModelDefinition> models = GenerateModels(lines); 
+/* Generate classes */
+List<EntityDefinition> entities = GenerateEntities(lines); 
 
-foreach (var model in models)
+foreach (var entity in entities)
 {
 	var builder = new StringBuilder();
-	builder.AppendLine(@"// This file is auto generated. Changes to these files will be lost!
+	builder.AppendLine(@"//This file is auto generated. Changes to these files will be lost!
 	using System;
 	using System.Collections.Generic;
 	
 	namespace TexTran.Data.Abstractions.Entities
 	{");
-	builder.AppendLine($"	public class {model.Name}");
+	builder.AppendLine($"	public class {entity.Name}");
 	builder.AppendLine("	{");
-	foreach (var property in model.Properties)
+	foreach (var property in entity.Properties)
 	{
 		builder.AppendLine($"		public {property.Type} {property.Name} {{ get; set; }}");
 	}
@@ -44,13 +38,12 @@ foreach (var model in models)
 }");
 
 	/* Write to Entities folder */
-	WriteToFolder(entitiesFolder, model.Name, builder.ToString());
+	WriteToFolder(entitiesFolder, entity.Name, builder.ToString());
 }
 #>
 
 <#+
 
-/* Methods */
 public void WriteToFolder(string folder, string fileName, string content)
 {
 	using (FileStream fs = new FileStream(Path.Combine(folder, fileName + ".cs"), FileMode.Create))
@@ -68,9 +61,9 @@ public void RemoveFilesFromFolder(string path)
 	Array.ForEach(Directory.GetFiles(path), File.Delete);
 }
 
-public List<ModelDefinition> GenerateModels(string[] lines)
+public List<EntityDefinition> GenerateEntities(string[] lines)
 {
-	List<ModelDefinition> result = new List<ModelDefinition>();
+	List<EntityDefinition> result = new List<EntityDefinition>();
 	var lineNumber = -1;
 
 	foreach(var line in lines)
@@ -82,13 +75,13 @@ public List<ModelDefinition> GenerateModels(string[] lines)
 
 		if(!match.Success)
 		{
-			var model = new ModelDefinition
+			var entity = new EntityDefinition
 			{
 				Name = line,
 				Properties = GetProperties(lineNumber, lines)
 			};
 
-			result.Add(model);
+			result.Add(entity);
 		}
 	}
 	return result;
@@ -114,9 +107,7 @@ public PropertyDefinition[] GetProperties(int lineNumber, string[] lines)
 	return properties.ToArray();
 }
 
-/* Models */
-
-public class ModelDefinition
+public class EntityDefinition
 {
 	public string Name { get; set; }
 	public PropertyDefinition[] Properties { get; set; }
@@ -133,4 +124,5 @@ public class PropertyDefinition
 	public string Name { get; set; }
 	public string Type { get; set; }
 }
+
 #>

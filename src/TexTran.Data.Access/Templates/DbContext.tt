@@ -1,4 +1,5 @@
-﻿<#@ template hostspecific="true" language="C#" #>
+﻿
+<#@ template hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Linq" #>
@@ -20,6 +21,7 @@ var entities = entityPaths.Select(x => Path.GetFileName(x));
 RemoveFilesFromFolder(contextFolder);
 
 var stringBuilder = new StringBuilder();
+
 stringBuilder.AppendLine(@"// This code is auto generated. Changes to this file will be lost!
 using Microsoft.EntityFrameworkCore;
 using TexTran.Data.Abstractions.Entities;
@@ -28,7 +30,7 @@ namespace TextTran.Data.Access.Context
 {
 	public class TextTranContext : DbContext
 	{
-		public TextTranContext(DbContextOptions options) : base(options) { }
+		public TextTranContext(DbContextOptions options) : base(options) {{ }}
 ");
 
 foreach (var item in entities)
@@ -46,6 +48,7 @@ WriteToFolder(contextFolder, contextName, stringBuilder.ToString());
 
 <#+
 /* Methods */
+
 public void WriteToFolder(string folder, string fileName, string content)
 {
 	using (FileStream fs = new FileStream(Path.Combine(folder, fileName + ".cs"), FileMode.Create))
@@ -62,5 +65,4 @@ public void RemoveFilesFromFolder(string path)
 {
 	Array.ForEach(Directory.GetFiles(path), File.Delete);
 }
-
 #>

@@ -1,4 +1,4 @@
-// This file is auto generated. Changes to these files will be lost!
+//This file is auto generated. Changes to these files will be lost!
 	using System;
 	using System.Collections.Generic;
 	

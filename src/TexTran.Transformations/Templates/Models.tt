@@ -39,3 +39,71 @@ foreach (var model in models)
 }
 #>
 }
+
+<#+
+public List<ModelDefinition> GenerateModels(string[] lines)
+{
+	List<ModelDefinition> result = new List<ModelDefinition>();
+	var lineNumber = -1;
+
+	foreach(var line in lines)
+	{
+		lineNumber++;
+		if (String.IsNullOrEmpty(line)) continue;
+		
+		var match = Regex.Match(line, @"^\s+");
+
+		if(!match.Success)
+		{
+			var model = new ModelDefinition
+			{
+				Name = line,
+				Properties = GetProperties(lineNumber, lines)
+			};
+
+			result.Add(model);
+		}
+	}
+	return result;
+}
+
+public PropertyDefinition[] GetProperties(int lineNumber, string[] lines)
+{
+	List<PropertyDefinition> properties = new List<PropertyDefinition>();
+
+	for (var i = lineNumber + 1; i < lines.Length; i++)
+	{
+		var match = Regex.Match(lines[i], @"^\s+(?<name>[^:]+):(?<type>[^\s]+)");
+
+		if (match.Success)
+		{
+				properties.Add(new PropertyDefinition(match.Groups["name"].Value, match.Groups["type"].Value ));
+		}
+		else
+		{
+			break;
+		}
+	}
+	return properties.ToArray();
+}
+
+/* Models */
+
+public class ModelDefinition
+{
+	public string Name { get; set; }
+	public PropertyDefinition[] Properties { get; set; }
+}
+
+public class PropertyDefinition
+{
+	public PropertyDefinition(string name, string type)
+	{
+		Name = name;
+		Type = type;
+	}
+
+	public string Name { get; set; }
+	public string Type { get; set; }
+}
+#>
