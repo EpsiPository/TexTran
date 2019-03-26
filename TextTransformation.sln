@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextTran.Transformations", "src\TextTran.Service\TextTran.Transformations.csproj", "{9B99DDAB-207A-49E5-99B4-10FCE01D286B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextTran.Data.Access", "src\TextTran.Data\TextTran.Data.Access.csproj", "{EFFF8586-45CA-4AE9-A96D-5F021359BB8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextTran.Data.Access", "src\TextTran.Data.Access\TextTran.Data.Access.csproj", "{EFFF8586-45CA-4AE9-A96D-5F021359BB8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Host", "src\TexTran.Host\TexTran.Host.csproj", "{E63CCC98-85DC-45B7-8795-1CAB78FEEB27}"
 EndProject
