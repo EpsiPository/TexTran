@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TexTran.Data.Abstractions\TexTran.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\TexTran.Data.Access\TexTran.Data.Access.csproj" />
+  </ItemGroup>
+
 </Project>

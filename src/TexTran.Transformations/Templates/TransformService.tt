@@ -7,7 +7,7 @@
 <#@ include file="TransformModels.tt" #>
 
 <#+ 
-public void WriteToDirectory(string folder, string fileName, string content)
+public void WriteToFolder(string folder, string fileName, string content)
 {
 	using (FileStream fs = new FileStream(Path.Combine(folder, fileName + ".cs"), FileMode.Create))
     {

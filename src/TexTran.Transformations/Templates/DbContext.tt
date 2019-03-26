@@ -48,5 +48,5 @@ stringBuilder.AppendLine("	}");
 stringBuilder.AppendLine("}");
 
 /* Write to folder */
-WriteToDirectory(contextFolder, contextName, stringBuilder.ToString());
+WriteToFolder(contextFolder, contextName, stringBuilder.ToString());
 #>

@@ -45,6 +45,6 @@ foreach (var model in models)
 	builder.AppendLine("}");
 
 	/* Write to Entities folder */
-	WriteToDirectory(entitiesFolder, model.Name, builder.ToString());
+	WriteToFolder(entitiesFolder, model.Name, builder.ToString());
 }
 #>
