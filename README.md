@@ -6,6 +6,7 @@ Currently supported:
 - Entities
 - Models
 - Enums
+- DbContext + DbSets
 
 .NET Core 2.2 +
 AutoT4 1.2.2
@@ -55,3 +56,9 @@ namespace TexTran.Data.Abstractions.Entities
 }
 ```
 After adding more content to the definitions, just run `Build > Transform all T4 templates` to re-generate all code.
+
+# TODO
+
+- Nullable types support
+- Summary/comment support
+- Generate repositories
