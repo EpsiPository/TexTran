@@ -9,11 +9,11 @@ namespace TexTran.Data.Abstractions.Entities
 	/// </summary>
 	public class Order : BaseEntity
 	{
-		public List<Product> Products { get; set; }
+		public List<Product> Products  { get; set; }
 			
-		public decimal Price { get; set; }
+		public decimal Price  { get; set; }
 			
-		public int? Quantity { get; set; }
+		public int? Quantity  { get; set; }
 			
 	}
 }

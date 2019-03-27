@@ -1,15 +1,15 @@
 ﻿User // Description of user
-	FirstName:string
-	LastName:string
-	Email:string
-	Phone:string
+	FirstName : string
+	LastName : string
+	Email : string
+	Phone : string
 
 Product
-	Name:string
-	Price:decimal
-	Category:string
+	Name : string
+	Price : decimal
+	Category : string
 
 Order // Description of order
-	Products:List<Product>
-	Price:decimal
-	Quantity:int?
+	Products : List<Product>
+	Price : decimal
+	Quantity : int?

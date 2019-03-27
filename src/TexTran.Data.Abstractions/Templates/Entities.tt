@@ -29,7 +29,7 @@ namespace TexTran.Data.Abstractions.Entities
 	/// {summary}
 	/// </summary>");
 	}
-	builder.AppendLine($"	public class {entity.Name}: BaseEntity");
+	builder.AppendLine($"	public class {(entity.Name).Trim()} : BaseEntity");
 	builder.AppendLine("	{");
 	foreach (var property in entity.Properties)
 	{

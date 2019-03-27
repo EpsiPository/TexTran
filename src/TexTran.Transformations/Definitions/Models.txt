@@ -1,4 +1,4 @@
 ﻿User
-	Id:Guid
-	Name:string
-	Email:string
+	Id : Guid
+	Name : string
+	Email : string

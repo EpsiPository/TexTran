@@ -59,7 +59,7 @@ public PropertyDefinition[] GetProperties(int lineNumber, string[] lines)
 
 	for (var i = lineNumber + 1; i < lines.Length; i++)
 	{
-		var matchProperties = Regex.Match(lines[i], @"^\s+(?<name>[^:]+):(?<type>[^\?\s\?]+)(?<nullable>[$\?])?");
+		var matchProperties = Regex.Match(lines[i], @"^\s+(?<name>[^:]+)(?<center>[\s]?:[\s]?)(?<type>[^\?\s\?]+)(?<nullable>[$\?])?");
 
 		if (matchProperties.Success)
 		{
