@@ -7,10 +7,8 @@ namespace TexTran.Data.Abstractions.Entities
 	/// <summary>
 	/// Description of order
 	/// </summary>
-	public class Order 
+	public class Order : BaseEntity
 	{
-		public Guid Id { get; set; }
-			
 		public List<Product> Products { get; set; }
 			
 		public decimal Price { get; set; }

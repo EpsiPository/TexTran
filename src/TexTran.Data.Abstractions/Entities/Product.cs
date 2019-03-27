@@ -4,10 +4,8 @@ using System.Collections.Generic;
 	
 namespace TexTran.Data.Abstractions.Entities
 {
-	public class Product
+	public class Product: BaseEntity
 	{
-		public Guid Id { get; set; }
-			
 		public string Name { get; set; }
 			
 		public decimal Price { get; set; }

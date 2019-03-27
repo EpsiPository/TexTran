@@ -1,18 +1,15 @@
 ﻿User // Description of user
-	Id:Guid
 	FirstName:string
 	LastName:string
 	Email:string
 	Phone:string
 
 Product
-	Id:Guid
 	Name:string
 	Price:decimal
 	Category:string
 
 Order // Description of order
-	Id:Guid
 	Products:List<Product>
 	Price:decimal
 	Quantity:int?

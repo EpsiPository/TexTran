@@ -2,11 +2,14 @@
 <#
 var directory = Path.GetDirectoryName(this.Host.TemplateFile);
 var entitiesFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
+var entityBaseFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities\Base");
 
 var definition = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
 var lines = File.ReadLines(definition).ToArray();
 
 RemoveFilesFromFolder(entitiesFolder);
+
+WriteToFolder(entityBaseFolder, "IBaseEntity", CreateBaseEntity());
 
 List<EntityDefinition> entities = GenerateEntities(lines); 
 
@@ -26,7 +29,7 @@ namespace TexTran.Data.Abstractions.Entities
 	/// {summary}
 	/// </summary>");
 	}
-	builder.AppendLine($"	public class {entity.Name}");
+	builder.AppendLine($"	public class {entity.Name}: BaseEntity");
 	builder.AppendLine("	{");
 	foreach (var property in entity.Properties)
 	{
