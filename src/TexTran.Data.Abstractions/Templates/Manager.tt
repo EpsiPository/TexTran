@@ -1,0 +1,90 @@
+﻿<#@ template hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#+
+
+public void WriteToFolder(string folder, string fileName, string content)
+{
+	using (FileStream fs = new FileStream(Path.Combine(folder, fileName + ".cs"), FileMode.Create))
+    {
+        using (StreamWriter str = new StreamWriter(fs))
+        {
+            str.WriteLine(content);
+            str.Flush();
+        }
+    }
+}
+
+public void RemoveFilesFromFolder(string path)
+{
+	Array.ForEach(Directory.GetFiles(path), File.Delete);
+}
+
+public List<EntityDefinition> GenerateEntities(string[] lines)
+{
+	List<EntityDefinition> result = new List<EntityDefinition>();
+	var lineNumber = -1;
+
+	foreach(var line in lines)
+	{
+		lineNumber++;
+		if (String.IsNullOrEmpty(line)) continue;
+		
+		var match = Regex.Match(line, @"^\s+");
+
+		if(!match.Success)
+		{
+			var entity = new EntityDefinition
+			{
+				Name = line,
+				Properties = GetProperties(lineNumber, lines)
+			};
+
+			result.Add(entity);
+		}
+	}
+	return result;
+}
+
+public PropertyDefinition[] GetProperties(int lineNumber, string[] lines)
+{
+	List<PropertyDefinition> properties = new List<PropertyDefinition>();
+
+	for (var i = lineNumber + 1; i < lines.Length; i++)
+	{
+		var match = Regex.Match(lines[i], @"^\s+(?<name>[^:]+):(?<type>[^\s]+)");
+
+		if (match.Success)
+		{
+				properties.Add(new PropertyDefinition(match.Groups["name"].Value, match.Groups["type"].Value ));
+		}
+		else
+		{
+			break;
+		}
+	}
+	return properties.ToArray();
+}
+
+public class EntityDefinition
+{
+	public string Name { get; set; }
+	public PropertyDefinition[] Properties { get; set; }
+}
+
+public class PropertyDefinition
+{
+	public PropertyDefinition(string name, string type)
+	{
+		Name = name;
+		Type = type;
+	}
+
+	public string Name { get; set; }
+	public string Type { get; set; }
+}
+#>
