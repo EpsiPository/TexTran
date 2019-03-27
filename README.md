@@ -49,6 +49,9 @@ using System.Collections.Generic;
 
 namespace TexTran.Data.Abstractions.Entities
 {
+	/// <summary>
+	/// Description of order
+	/// </summary>
 	public class Order
 	{
 		public Guid Id { get; set; }
@@ -65,5 +68,4 @@ After adding more content to the definitions, just run `Build > Transform all T4
 
 # TODO
 
-- Summary/comment support
-- Generate repositories
+- Generate repositories / CRUD
