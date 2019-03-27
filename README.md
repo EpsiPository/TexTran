@@ -37,8 +37,8 @@ Order
 	Price:decimal
 ```
 
-In this project, Entities are generated in separate files and saved to the `Data.Abstractions` project. 
-Models/Enums for example are generated in a single CS file, but this can be changed to your needs.
+In this project, Entities are generated in separate files. 
+Models/Enums for example are generated in a single CS file, but this can be changed as needed.
 
 Generated Entity example:
 ``` csharp
@@ -56,7 +56,7 @@ namespace TexTran.Data.Abstractions.Entities
 	}
 }
 ```
-After adding more content to the definitions, just run `Build > Transform all T4 templates` to re-generate all code. If you added an Entity, there will also be a DbSet<Entity> generated.
+After adding more content to the definitions, just run `Build > Transform all T4 templates` to re-generate all code. If you added an Entity, there will also be a DbSet<Entity> added to the generated DbContext.
 
 # TODO
 
