@@ -13,12 +13,19 @@ List<EntityDefinition> entities = GenerateEntities(lines);
 foreach (var entity in entities)
 {
 	var builder = new StringBuilder();
-	builder.AppendLine(@"// This file is auto generated. Changes to these files will be lost!
-	using System;
-	using System.Collections.Generic;
+	builder.AppendLine(@"// This file is auto generated. Changes to this file will be lost!
+using System;
+using System.Collections.Generic;
 	
-	namespace TexTran.Data.Abstractions.Entities
-	{");
+namespace TexTran.Data.Abstractions.Entities
+{");
+	if (!string.IsNullOrEmpty(entity.Summary))
+	{
+	var summary = Regex.Replace(entity.Summary, "// ", "");
+		builder.AppendLine($@"	/// <summary>
+	/// {summary}
+	/// </summary>");
+	}
 	builder.AppendLine($"	public class {entity.Name}");
 	builder.AppendLine("	{");
 	foreach (var property in entity.Properties)

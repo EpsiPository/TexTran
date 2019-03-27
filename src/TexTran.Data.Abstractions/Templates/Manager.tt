@@ -34,13 +34,16 @@ public List<EntityDefinition> GenerateEntities(string[] lines)
 		lineNumber++;
 		if (String.IsNullOrEmpty(line)) continue;
 		
-		var match = Regex.Match(line, @"^\s+");
+		var matchEntity = Regex.Match(line, @"^\s+");
 
-		if(!match.Success)
+		if(!matchEntity.Success)
 		{
+			var matchSummary = Regex.Match(line, @"//.+");
+			
 			var entity = new EntityDefinition
 			{
-				Name = line,
+				Summary = matchSummary.Success ? matchSummary.Value : string.Empty,
+				Name = Regex.Replace(line, @"//.+", ""),
 				Properties = GetProperties(lineNumber, lines)
 			};
 
@@ -56,11 +59,11 @@ public PropertyDefinition[] GetProperties(int lineNumber, string[] lines)
 
 	for (var i = lineNumber + 1; i < lines.Length; i++)
 	{
-		var match = Regex.Match(lines[i], @"^\s+(?<name>[^:]+):(?<type>[^\?\s\?]+)(?<nullable>[$\?])?");
+		var matchProperties = Regex.Match(lines[i], @"^\s+(?<name>[^:]+):(?<type>[^\?\s\?]+)(?<nullable>[$\?])?");
 
-		if (match.Success)
+		if (matchProperties.Success)
 		{
-				properties.Add(new PropertyDefinition(match.Groups["name"].Value, match.Groups["type"].Value, string.IsNullOrEmpty(match.Groups["nullable"].Value) ? false : true));
+				properties.Add(new PropertyDefinition(matchProperties.Groups["name"].Value, matchProperties.Groups["type"].Value, string.IsNullOrEmpty(matchProperties.Groups["nullable"].Value) ? false : true));
 		}
 		else
 		{
@@ -74,6 +77,7 @@ public class EntityDefinition
 {
 	public string Name { get; set; }
 	public PropertyDefinition[] Properties { get; set; }
+	public string Summary { get; set; }
 }
 
 public class PropertyDefinition
