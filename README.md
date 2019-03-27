@@ -15,8 +15,6 @@ Currently supported:
 
 ## Usage
 
-Definitions are located in the `TextTran.Transformations\Definitions` folder.
-
 Example Entity defintion file:
 
 ``` txt
