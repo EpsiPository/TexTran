@@ -23,7 +23,14 @@ foreach (var entity in entities)
 	builder.AppendLine("	{");
 	foreach (var property in entity.Properties)
 	{
-		builder.AppendLine($"		public {property.Type} {property.Name} {{ get; set; }}");
+		if (property.Nullable)
+		{
+			builder.AppendLine($"		public {property.Type}? {property.Name} {{ get; set; }}");
+		}
+		else
+		{
+			builder.AppendLine($"		public {property.Type} {property.Name} {{ get; set; }}");
+		}
 	}
 	builder.AppendLine(@"	}
 }");

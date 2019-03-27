@@ -56,11 +56,11 @@ public PropertyDefinition[] GetProperties(int lineNumber, string[] lines)
 
 	for (var i = lineNumber + 1; i < lines.Length; i++)
 	{
-		var match = Regex.Match(lines[i], @"^\s+(?<name>[^:]+):(?<type>[^\s]+)");
+		var match = Regex.Match(lines[i], @"^\s+(?<name>[^:]+):(?<type>[^\?\s\?]+)(?<nullable>[$\?])?");
 
 		if (match.Success)
 		{
-				properties.Add(new PropertyDefinition(match.Groups["name"].Value, match.Groups["type"].Value ));
+				properties.Add(new PropertyDefinition(match.Groups["name"].Value, match.Groups["type"].Value, string.IsNullOrEmpty(match.Groups["nullable"].Value) ? false : true));
 		}
 		else
 		{
@@ -78,13 +78,15 @@ public class EntityDefinition
 
 public class PropertyDefinition
 {
-	public PropertyDefinition(string name, string type)
+	public PropertyDefinition(string name, string type, bool nullable)
 	{
 		Name = name;
 		Type = type;
+		Nullable = nullable;
 	}
 
 	public string Name { get; set; }
 	public string Type { get; set; }
+	public bool Nullable { get; set; }
 }
 #>
