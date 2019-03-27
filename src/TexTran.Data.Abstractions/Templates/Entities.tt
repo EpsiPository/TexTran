@@ -9,7 +9,7 @@ var lines = File.ReadLines(definition).ToArray();
 
 RemoveFilesFromFolder(entitiesFolder);
 
-WriteToFolder(entityBaseFolder, "IBaseEntity", CreateBaseEntity());
+WriteToFolder(entityBaseFolder, "BaseEntity", CreateBaseEntity());
 
 List<EntityDefinition> entities = GenerateEntities(lines); 
 

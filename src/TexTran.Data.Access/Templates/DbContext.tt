@@ -6,7 +6,6 @@ var directory = Path.GetDirectoryName(this.Host.TemplateFile);
 var contextFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Access\Context");
 var entityFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
 
-/* Get entities */
 var entityPaths = Directory.GetFiles(entityFolder);
 var entities = entityPaths.Select(x => Path.GetFileName(x));
 
