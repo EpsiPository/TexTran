@@ -25,17 +25,18 @@ foreach (var entity in entities)
 	{
 		if (property.Nullable)
 		{
-			builder.AppendLine($"		public {property.Type}? {property.Name} {{ get; set; }}");
+			builder.AppendLine($@"		public {property.Type}? {property.Name} {{ get; set; }}
+			");
 		}
 		else
 		{
-			builder.AppendLine($"		public {property.Type} {property.Name} {{ get; set; }}");
+			builder.AppendLine($@"		public {property.Type} {property.Name} {{ get; set; }}
+			");
 		}
 	}
 	builder.AppendLine(@"	}
 }");
 
-	/* Write to Entities folder */
 	WriteToFolder(entitiesFolder, entity.Name, builder.ToString());
 }
 #>

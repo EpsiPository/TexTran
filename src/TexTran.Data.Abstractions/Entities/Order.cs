@@ -7,9 +7,13 @@
 	public class Order
 	{
 		public Guid Id { get; set; }
+			
 		public List<Product> Products { get; set; }
+			
 		public decimal Price { get; set; }
+			
 		public int? Quantity { get; set; }
+			
 	}
 }
 
