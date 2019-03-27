@@ -1,6 +1,6 @@
 # TexTran
 
-TexTran is a project that contains text transformation templates to generate classes from simple definitions. I started this project to discover what T4 has to offer.
+TexTran is a project that contains text transformation templates to generate classes from simple definitions. I started this project to discover what T4 has to offer and how I can use this in future projects.
 
 Currently supported: 
 - Entities
