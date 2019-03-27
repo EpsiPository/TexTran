@@ -35,6 +35,7 @@ Order
 	Id:Guid
 	Products:List<Product>
 	Price:decimal
+	Quantity:int?
 ```
 
 In this project, Entities are generated in separate files. 
@@ -51,8 +52,12 @@ namespace TexTran.Data.Abstractions.Entities
 	public class Order
 	{
 		public Guid Id { get; set; }
+		
 		public List<Product> Products { get; set; }
+		
 		public decimal Price { get; set; }
+		
+		public int? Quantity { get; set; }
 	}
 }
 ```
@@ -60,6 +65,5 @@ After adding more content to the definitions, just run `Build > Transform all T4
 
 # TODO
 
-- Nullable types support
 - Summary/comment support
 - Generate repositories
