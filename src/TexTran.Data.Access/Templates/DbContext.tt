@@ -20,7 +20,10 @@ namespace TextTran.Data.Access.Context
 {
 	public class TextTranContext : DbContext
 	{
-		public TextTranContext(DbContextOptions options) : base(options) { }
+		public TextTranContext(DbContextOptions options) 
+			: base(options) 
+		{
+		}
 ");
 
 foreach (var item in entities)
