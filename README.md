@@ -31,7 +31,7 @@ Product
 	Price:decimal
 	Category:string
 
-Order
+Order // Description of order
 	Id:Guid
 	Products:List<Product>
 	Price:decimal
