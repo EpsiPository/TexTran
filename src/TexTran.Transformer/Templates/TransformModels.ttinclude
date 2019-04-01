@@ -1,0 +1,45 @@
+<#@ import namespace="System.IO" #>
+<#
+#> 
+<#+
+/* Models */ 
+
+public class EntityDefinition
+{
+	public string Name { get; set; }
+	public PropertyDefinition[] Properties { get; set; }
+	public string Summary { get; set; }
+}
+
+public class PropertyDefinition
+{
+	public PropertyDefinition(string name, string type, bool nullable)
+	{
+		Name = name;
+		Type = type;
+		Nullable = nullable;
+	}
+
+	public string Name { get; set; }
+	public string Type { get; set; }
+	public bool Nullable { get; set; }
+}
+
+public class EnumDefinition
+{
+	public string Name { get; set; }
+	public EnumConstantDefinition[] Constants { get; set; }
+}
+
+public class EnumConstantDefinition
+{
+	public EnumConstantDefinition(string name, string value)
+	{
+		Name = name;
+		Value = value;
+	}
+
+	public string Name { get; set; }
+	public string Value { get; set; }
+}
+#>

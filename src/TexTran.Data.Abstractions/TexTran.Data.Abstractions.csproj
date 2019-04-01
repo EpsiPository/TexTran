@@ -22,39 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Templates\Entities.cs">
-      <DependentUpon>Entities.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Templates\Enums.cs">
-      <DependentUpon>Enums.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Templates\Manager.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Manager.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Templates\Entities.tt">
-      <LastGenOutput>Entities.cs</LastGenOutput>
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </None>
-    <None Update="Templates\Enums.tt">
-      <LastGenOutput>Enums.cs</LastGenOutput>
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </None>
-    <None Update="Templates\Manager.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Manager.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Entities\Base\" />
     <Folder Include="Enums\" />
   </ItemGroup>

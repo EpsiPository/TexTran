@@ -5,16 +5,25 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ include file="$(SolutionDir)Shared.ttinclude" #>
+<#@ include file="TransformModels.ttinclude" #>
 <#
 var directory = Path.GetDirectoryName(this.Host.TemplateFile);
 
 var entitiesFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
 var entityBaseFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities\Base");
 var enumsFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Enums");
+var configurationsFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Access\Configurations");
+var contextFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Access\Context");
+
+var entityPaths = Directory.GetFiles(entitiesFolder);
+var configurationPaths = Directory.GetFiles(configurationsFolder);
+
+var entityNames = entityPaths.Select(x => Path.GetFileName(x));
+var configurations = configurationPaths.Select(x => Path.GetFileName(x));
 
 var definition = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
 var entityLines = File.ReadLines(definition).ToArray();
+
 string enumsPath = this.Host.ResolvePath(@"..\Definitions\Enums.txt");
 var enumLines = File.ReadLines(enumsPath).ToArray();
 #>
@@ -133,5 +142,25 @@ namespace TexTran.Data.Abstractions.Entities
     }
 }");
 	return builder.ToString();
+}
+
+
+/* Methods */
+
+public void WriteToFolder(string folder, string fileName, string content)
+{
+	using (FileStream fs = new FileStream(Path.Combine(folder, fileName.Trim() + ".cs"), FileMode.Create))
+    {
+        using (StreamWriter str = new StreamWriter(fs))
+        {
+            str.WriteLine(content);
+            str.Flush();
+        }
+    }
+}
+
+public void RemoveFilesFromFolder(string path)
+{
+	Array.ForEach(Directory.GetFiles(path), File.Delete);
 }
 #>

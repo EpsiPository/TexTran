@@ -8,7 +8,6 @@ namespace TexTran.Data.Access.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(x => x.Id);
             builder.HasOne(x => x.Group).WithMany(x => x.Members);
         }
     }

@@ -9,10 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Host", "src\TexTran
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Data.Abstractions", "src\TexTran.Data.Abstractions\TexTran.Data.Abstractions.csproj", "{7D844234-E1E0-46E9-A079-2B4D6E0AA432}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{631F9E3A-13DE-4D9A-B5BF-970BB7AAF042}"
-	ProjectSection(SolutionItems) = preProject
-		Shared.ttinclude = Shared.ttinclude
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Transformer", "src\TexTran.Transformer\TexTran.Transformer.csproj", "{4FE1E2DC-1020-40CE-84B5-CE24A25CEFB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +29,10 @@ Global
 		{7D844234-E1E0-46E9-A079-2B4D6E0AA432}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D844234-E1E0-46E9-A079-2B4D6E0AA432}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D844234-E1E0-46E9-A079-2B4D6E0AA432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FE1E2DC-1020-40CE-84B5-CE24A25CEFB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FE1E2DC-1020-40CE-84B5-CE24A25CEFB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FE1E2DC-1020-40CE-84B5-CE24A25CEFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FE1E2DC-1020-40CE-84B5-CE24A25CEFB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

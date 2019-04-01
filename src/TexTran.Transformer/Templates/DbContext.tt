@@ -32,7 +32,7 @@ stringBuilder.AppendLine($"			modelBuilder.ApplyConfiguration(new {entityTypeCon
 stringBuilder.AppendLine(@"		}
 ");
 
-foreach (var item in entities)
+foreach (var item in entityNames)
 {
 	var entity = item.Replace(".cs", "");
 	stringBuilder.AppendLine($"		public DbSet<{entity}> {entity}s {{ get; set; }}");
