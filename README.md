@@ -2,7 +2,7 @@
 
 TexTran is a project that contains text transformation templates to generate classes from simple definitions. I started this project to discover what T4 has to offer and how I can use this in future projects.
 
-Currently supported: 
+Currently generated: 
 - Entities
 - Models
 - Enums
@@ -11,6 +11,7 @@ Currently supported:
 ## Technologies
 
 - .NET Core 2.2
+- Entity Framework Core 2 + FluentAPI
 - AutoT4 1.2.2
 
 ## Usage
@@ -59,6 +60,6 @@ namespace TexTran.Data.Abstractions.Entities
 	}
 }
 ```
-After adding more content to the definitions, just run `Build > Transform all T4 templates` to re-generate all code. If you added an Entity, there will also be a DbSet<Entity> added to the generated DbContext.
-	
+After adding more content to the definitions, just run `Build > Transform all T4 templates` or build your solution to re-generate all code. If you added an Entity, there will also be a DbSet<Entity> added to the generated DbContext, same counts for IEntityTypeConfigurations.
+
 ** This is still a work in progress **
