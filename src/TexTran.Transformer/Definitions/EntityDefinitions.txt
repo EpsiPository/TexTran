@@ -3,6 +3,7 @@
 	LastName : string
 	EmailAddress : string
 	DateOfBirth : DateTimeOffset
+	Gender: Gender
 	Group : Group
 
 Group
