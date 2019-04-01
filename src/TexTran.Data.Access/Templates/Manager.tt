@@ -5,6 +5,17 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#
+string contextName = "TexTranContext";
+var directory = Path.GetDirectoryName(this.Host.TemplateFile);
+var contextFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Access\Context");
+var entityFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
+var configurationsFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Access\Configurations");
+var entityPaths = Directory.GetFiles(entityFolder);
+var configurationPaths = Directory.GetFiles(configurationsFolder);
+var entities = entityPaths.Select(x => Path.GetFileName(x));
+var configurations = configurationPaths.Select(x => Path.GetFileName(x));
+#>
 <#+
 
 public void WriteToFolder(string folder, string fileName, string content)

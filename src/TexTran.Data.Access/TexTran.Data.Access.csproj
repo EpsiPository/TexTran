@@ -55,6 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Configurations\" />
     <Folder Include="Context\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
