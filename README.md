@@ -8,34 +8,31 @@ Currently supported:
 - Enums
 - DbContext + DbSets
 
-.NET Core 2.2 +
-AutoT4 1.2.2
+## Technologies
 
-# Usage
+- .NET Core 2.2
+- AutoT4 1.2.2
 
-Definitions are located in the `TextTran.Transformations\Definitions` folder.
+## Usage
 
 Example Entity defintion file:
 
 ``` txt
 User
-	Id:Guid
-	FirstName:string
-	LastName:string
-	Email:string
-	Phone:string
+	FirstName : string
+	LastName : string
+	Email : string
+	Phone : string
 
 Product
-	Id:Guid
-	Name:string
-	Price:decimal
-	Category:string
+	Name : string
+	Price : decimal
+	Category : string
 
 Order // Description of order
-	Id:Guid
-	Products:List<Product>
-	Price:decimal
-	Quantity:int?
+	Products : List<Product>
+	Price : decimal
+	Quantity : int?
 ```
 
 In this project, Entities are generated in separate files. 
@@ -52,10 +49,8 @@ namespace TexTran.Data.Abstractions.Entities
 	/// <summary>
 	/// Description of order
 	/// </summary>
-	public class Order
+	public class Order : BaseEntity
 	{
-		public Guid Id { get; set; }
-		
 		public List<Product> Products { get; set; }
 		
 		public decimal Price { get; set; }
@@ -65,7 +60,5 @@ namespace TexTran.Data.Abstractions.Entities
 }
 ```
 After adding more content to the definitions, just run `Build > Transform all T4 templates` to re-generate all code. If you added an Entity, there will also be a DbSet<Entity> added to the generated DbContext.
-
-# TODO
-
-- Generate repositories / CRUD
+	
+** This is still a work in progress **
