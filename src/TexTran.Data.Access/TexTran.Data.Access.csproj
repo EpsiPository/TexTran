@@ -13,12 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Repositories\**" />
-    <EmbeddedResource Remove="Repositories\**" />
-    <None Remove="Repositories\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.3" />
   </ItemGroup>
 
@@ -32,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="Context\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
 

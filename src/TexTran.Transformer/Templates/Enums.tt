@@ -1,4 +1,4 @@
-﻿<#@ include file="TransformManager.tt" #>
+﻿<#@ include file="TransformManager.ttinclude" #>
 <#
 RemoveFilesFromFolder(enumsFolder);
 List<EnumDefinition> enums = GenerateEnums(enumLines); 

@@ -22,7 +22,7 @@ namespace TexTran.Host
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<TextTranContext>(o => o.UseSqlServer(Configuration.GetConnectionString("TexTranConnectionString")));
+            services.AddDbContext<TexTranContext>(o => o.UseSqlServer(Configuration.GetConnectionString("TexTranConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

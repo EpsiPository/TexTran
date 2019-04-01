@@ -1,9 +1,13 @@
-﻿<#@ include file="TransformManager.tt" #>
+﻿<#@ include file="TransformManager.ttinclude" #>
 <#
 RemoveFilesFromFolder(entitiesFolder);
 WriteToFolder(entityBaseFolder, "BaseEntity", CreateBaseEntity());
 
 List<EntityDefinition> entities = GenerateEntities(entityLines); 
+
+if(entities != null)
+{
+
 
 foreach (var entity in entities)
 {
@@ -21,8 +25,8 @@ namespace TexTran.Data.Abstractions.Entities
 	/// {summary}
 	/// </summary>");
 	}
-	builder.AppendLine($"	public class {(entity.Name).Trim()} : BaseEntity");
-	builder.AppendLine("	{");
+	builder.AppendLine($@"	public class {(entity.Name).Trim()} : BaseEntity
+	{{");
 	foreach (var property in entity.Properties)
 	{
 		if (property.Nullable)
@@ -40,5 +44,7 @@ namespace TexTran.Data.Abstractions.Entities
 }");
 
 	WriteToFolder(entitiesFolder, entity.Name, builder.ToString());
+}
+	EnsureDbContextCreated(contextName);
 }
 #>

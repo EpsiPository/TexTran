@@ -12,9 +12,9 @@ namespace TexTran.Data.Abstractions.Entities
 			
 		public string EmailAddress  { get; set; }
 			
-		public string Phone  { get; set; }
+		public DateTimeOffset DateOfBirth  { get; set; }
 			
-		public Group Group { get; set; }
+		public Group Group  { get; set; }
 			
 	}
 }

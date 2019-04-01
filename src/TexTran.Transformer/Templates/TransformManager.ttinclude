@@ -7,13 +7,15 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ include file="TransformModels.ttinclude" #>
 <#
-var directory = Path.GetDirectoryName(this.Host.TemplateFile);
+var contextName = "TexTranContext";
 
+var directory = Path.GetDirectoryName(this.Host.TemplateFile);
 var entitiesFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
 var entityBaseFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities\Base");
 var enumsFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Enums");
-var configurationsFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Access\Configurations");
 var contextFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Access\Context");
+var repositoryFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Access\Repositories");
+var configurationsFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Access\Configurations");
 
 var entityPaths = Directory.GetFiles(entitiesFolder);
 var configurationPaths = Directory.GetFiles(configurationsFolder);
@@ -21,14 +23,60 @@ var configurationPaths = Directory.GetFiles(configurationsFolder);
 var entityNames = entityPaths.Select(x => Path.GetFileName(x));
 var configurations = configurationPaths.Select(x => Path.GetFileName(x));
 
-var definition = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
-var entityLines = File.ReadLines(definition).ToArray();
+var entityDefinitions = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
+var entityLines = File.ReadLines(entityDefinitions).ToArray();
 
-string enumsPath = this.Host.ResolvePath(@"..\Definitions\Enums.txt");
-var enumLines = File.ReadLines(enumsPath).ToArray();
+string enumsDefinitions = this.Host.ResolvePath(@"..\Definitions\Enums.txt");
+var enumLines = File.ReadLines(enumsDefinitions).ToArray();
+
+void EnsureDbContextCreated(string dbContextName)
+{
+	var stringBuilder = new StringBuilder();
+stringBuilder.AppendLine($@"// This code is auto generated. Changes to this file will be lost!
+using Microsoft.EntityFrameworkCore;
+using TexTran.Data.Abstractions.Entities;
+using TexTran.Data.Access.Configurations;
+
+namespace TextTran.Data.Access.Context
+{{
+	public class {dbContextName} : DbContext
+	{{
+		public {dbContextName}(DbContextOptions options) 
+			: base(options) 
+		{{
+		}}
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{{");
+if(configurations != null)
+{
+	foreach(var configuration in configurations)
+	{
+		var entityTypeConfiguration = configuration.Replace(".cs", "");
+stringBuilder.AppendLine($@"			modelBuilder.ApplyConfiguration(new {entityTypeConfiguration}());");
+	}
+}
+			
+stringBuilder.AppendLine(@"		}
+");
+
+
+foreach (var item in entityNames)
+{
+	var entity = item.Replace(".cs", "");
+	stringBuilder.AppendLine($"		public DbSet<{entity}> {entity}s {{ get; set; }}");
+}
+
+stringBuilder.AppendLine(@"	}
+}");
+
+WriteToFolder(contextFolder, dbContextName, stringBuilder.ToString());
+}
+
 #>
 
 <#+
+
 public List<EntityDefinition> GenerateEntities(string[] lines)
 {
 	List<EntityDefinition> result = new List<EntityDefinition>();

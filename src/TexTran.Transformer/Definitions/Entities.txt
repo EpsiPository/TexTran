@@ -2,8 +2,8 @@
 	FirstName : string
 	LastName : string
 	EmailAddress : string
-	Phone : string
-	Group: Group
+	DateOfBirth : DateTimeOffset
+	Group : Group
 
 Group
 	Name : string

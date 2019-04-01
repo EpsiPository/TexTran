@@ -11,37 +11,29 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
   <ItemGroup>
-    <None Remove="Templates\DbContext.tt" />
     <None Remove="Templates\Entities.tt" />
     <None Remove="Templates\Enums.tt" />
-    <None Remove="Templates\TransformManager.tt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Templates\DbContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbContext.cs</LastGenOutput>
-    </Content>
     <Content Include="Templates\Entities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Entities.cs</LastGenOutput>
+      <AutoT4RunOnBuild>BeforeBuild</AutoT4RunOnBuild>
     </Content>
     <Content Include="Templates\Enums.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Enums.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\TransformManager.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TransformManager.cs</LastGenOutput>
+      <AutoT4RunOnBuild>BeforeBuild</AutoT4RunOnBuild>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Templates\DbContext.cs">
+    <Compile Update="Templates\Repositories.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
     <Compile Update="Templates\Entities.cs">
       <DesignTime>True</DesignTime>
@@ -56,8 +48,18 @@
     <Compile Update="Templates\TransformManager.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>TransformManager.tt</DependentUpon>
+      <DependentUpon>TransformManager.ttinclude</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Templates\Repositories.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Repositories.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TransformManager.ttinclude">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TransformManager.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

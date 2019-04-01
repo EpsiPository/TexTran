@@ -5,9 +5,9 @@ using TexTran.Data.Access.Configurations;
 
 namespace TextTran.Data.Access.Context
 {
-	public class TextTranContext : DbContext
+	public class TexTranContext : DbContext
 	{
-		public TextTranContext(DbContextOptions options) 
+		public TexTranContext(DbContextOptions options) 
 			: base(options) 
 		{
 		}
