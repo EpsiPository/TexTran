@@ -1,17 +1,9 @@
 ﻿<#@ include file="Manager.tt" #>
 <#
-var directory = Path.GetDirectoryName(this.Host.TemplateFile);
-var entitiesFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
-var entityBaseFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities\Base");
-
-var definition = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
-var lines = File.ReadLines(definition).ToArray();
-
 RemoveFilesFromFolder(entitiesFolder);
-
 WriteToFolder(entityBaseFolder, "BaseEntity", CreateBaseEntity());
 
-List<EntityDefinition> entities = GenerateEntities(lines); 
+List<EntityDefinition> entities = GenerateEntities(entityLines); 
 
 foreach (var entity in entities)
 {

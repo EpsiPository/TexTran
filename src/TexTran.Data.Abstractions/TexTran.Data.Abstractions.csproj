@@ -27,6 +27,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Templates\Enums.cs">
+      <DependentUpon>Enums.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Templates\Manager.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -39,6 +44,10 @@
       <LastGenOutput>Entities.cs</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
+    <None Update="Templates\Enums.tt">
+      <LastGenOutput>Enums.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
     <None Update="Templates\Manager.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Manager.cs</LastGenOutput>
@@ -47,6 +56,7 @@
 
   <ItemGroup>
     <Folder Include="Entities\Base\" />
+    <Folder Include="Enums\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
 </Project>

@@ -1,0 +1,31 @@
+﻿<#@ output extension=".cs" #>
+<#@ include file="Manager.tt" #>
+using System;
+
+namespace TextTran.Transformations.Enums
+{
+<#
+string path = this.Host.ResolvePath(@"..\Definitions\Enums.txt");
+var lines = File.ReadLines(path).ToArray();
+
+List<EnumDefinition> items = GenerateEnums(lines); 
+
+foreach (var item in items)
+{
+#>
+
+	public enum <#= item.Name #>
+	{
+ <#
+	foreach(var enumConstant in item.Constants)
+	{
+ #>
+	 <#= enumConstant.Name #> = <#= enumConstant.Value #>,
+ <#
+	}
+ #>
+	}
+<#
+}
+#>
+}

@@ -5,8 +5,15 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#+
+<#
+var directory = Path.GetDirectoryName(this.Host.TemplateFile);
+var entitiesFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
+var entityBaseFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities\Base");
+var definition = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
+var entityLines = File.ReadLines(definition).ToArray();
+#>
 
+<#+
 public void WriteToFolder(string folder, string fileName, string content)
 {
 	using (FileStream fs = new FileStream(Path.Combine(folder, fileName.Trim() + ".cs"), FileMode.Create))
@@ -73,6 +80,52 @@ public PropertyDefinition[] GetProperties(int lineNumber, string[] lines)
 	return properties.ToArray();
 }
 
+public List<EnumDefinition> GenerateEnums(string[] lines)
+{
+	List<EnumDefinition> result = new List<EnumDefinition>();
+	var lineNumber = -1;
+
+	foreach(var line in lines)
+	{
+		lineNumber++;
+		if (String.IsNullOrEmpty(line)) continue;
+		
+		var match = Regex.Match(line, @"^\s+");
+
+		if(!match.Success)
+		{
+			var enumDefinition = new EnumDefinition
+			{
+				Name = line,
+				Constants = GetConstants(lineNumber, lines)
+			};
+
+			result.Add(enumDefinition);
+		}
+	}
+	return result;
+}
+
+public EnumConstantDefinition[] GetConstants(int lineNumber, string[] lines)
+{
+	List<EnumConstantDefinition> enumConstants = new List<EnumConstantDefinition>();
+
+	for (var i = lineNumber + 1; i < lines.Length; i++)
+	{
+		var match = Regex.Match(lines[i], @"^\s+(?<name>[^:]+) : (?<value>[^\s]+)");
+
+		if (match.Success)
+		{
+				enumConstants.Add(new EnumConstantDefinition(match.Groups["name"].Value, match.Groups["value"].Value ));
+		}
+		else
+		{
+			break;
+		}
+	}
+	return enumConstants.ToArray();
+}
+
 public string CreateBaseEntity()
 {
 	var builder = new StringBuilder();
@@ -112,5 +165,23 @@ public class PropertyDefinition
 	public string Name { get; set; }
 	public string Type { get; set; }
 	public bool Nullable { get; set; }
+}
+
+public class EnumDefinition
+{
+	public string Name { get; set; }
+	public EnumConstantDefinition[] Constants { get; set; }
+}
+
+public class EnumConstantDefinition
+{
+	public EnumConstantDefinition(string name, string value)
+	{
+		Name = name;
+		Value = value;
+	}
+
+	public string Name { get; set; }
+	public string Value { get; set; }
 }
 #>

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Transformations", "src\TexTran.Transformations\TexTran.Transformations.csproj", "{9B99DDAB-207A-49E5-99B4-10FCE01D286B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Data.Access", "src\TexTran.Data.Access\TexTran.Data.Access.csproj", "{EFFF8586-45CA-4AE9-A96D-5F021359BB8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Host", "src\TexTran.Host\TexTran.Host.csproj", "{E63CCC98-85DC-45B7-8795-1CAB78FEEB27}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Data.Abstractions", "src\TexTran.Data.Abstractions\TexTran.Data.Abstractions.csproj", "{7D844234-E1E0-46E9-A079-2B4D6E0AA432}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{631F9E3A-13DE-4D9A-B5BF-970BB7AAF042}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9B99DDAB-207A-49E5-99B4-10FCE01D286B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B99DDAB-207A-49E5-99B4-10FCE01D286B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B99DDAB-207A-49E5-99B4-10FCE01D286B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B99DDAB-207A-49E5-99B4-10FCE01D286B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EFFF8586-45CA-4AE9-A96D-5F021359BB8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EFFF8586-45CA-4AE9-A96D-5F021359BB8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFFF8586-45CA-4AE9-A96D-5F021359BB8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
