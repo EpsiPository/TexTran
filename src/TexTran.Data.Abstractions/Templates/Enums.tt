@@ -1,31 +1,26 @@
-﻿<#@ output extension=".cs" #>
-<#@ include file="Manager.tt" #>
+﻿<#@ include file="Manager.tt" #>
+<#
+RemoveFilesFromFolder(enumsFolder);
+List<EnumDefinition> enums = GenerateEnums(enumLines); 
+
+foreach (var item in enums)
+{
+	var stringBuilder = new StringBuilder();
+	
+	stringBuilder.AppendLine(@"//  This file is auto generated. Changes to this file will be lost!
 using System;
-
+	
 namespace TextTran.Transformations.Enums
-{
-<#
-string path = this.Host.ResolvePath(@"..\Definitions\Enums.txt");
-var lines = File.ReadLines(path).ToArray();
-
-List<EnumDefinition> items = GenerateEnums(lines); 
-
-foreach (var item in items)
-{
-#>
-
-	public enum <#= item.Name #>
+{");
+	stringBuilder.AppendLine($@"	public enum {item.Name}
+	{{");
+	
+	foreach(var constant in item.Constants)
 	{
- <#
-	foreach(var enumConstant in item.Constants)
-	{
- #>
-	 <#= enumConstant.Name #> = <#= enumConstant.Value #>,
- <#
+stringBuilder.AppendLine($"		{constant.Name} = {constant.Value},");
 	}
- #>
-	}
-<#
+	stringBuilder.AppendLine(@"	}
+}");
+	WriteToFolder(enumsFolder, item.Name, stringBuilder.ToString());
 }
 #>
-}
