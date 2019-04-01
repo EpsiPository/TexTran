@@ -14,7 +14,8 @@ TexTran is a project that contains text transformation templates to generate cla
 Add a definition for a entity to the definition file (`EntityDefinitions.txt`). Just build the solution and following files are generated:
 - {Entity}.cs
 - {Entity}Repository.cs
-- DbContext + DbSet<{Entity}>
+- I{Entity}Repository.cs
+- DbContext.cs + DbSet<{Entity}>
 - If you add a `IEntityTypeConfiguration<{Entity}>` this will also be added to the `OnModelCreating()` of the generated `DbContext`
 
 Example Entity defintion file:
