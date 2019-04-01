@@ -1,6 +1,6 @@
 # TexTran
 
-TexTran is a project that contains text transformation templates to generate classes from simple definitions. I started this project to discover what `T4` has to offer and how I can use this in future projects. 
+TexTran is a project that contains `T4 templates` to generate classes from simple definitions. I started this project to discover what `T4` has to offer and how I can use this in future projects. 
 
 ## Technologies
 
@@ -10,15 +10,15 @@ TexTran is a project that contains text transformation templates to generate cla
 
 ## Usage
 
-Just define your models/entities in the definition files, and build the solution.
+Just define your classes in the definition files, and build the solution.
 
 ### Entity example
 
-Add a definition for a entity to the definition file (`EntityDefinitions.txt`). Build the solution and following files are generated:
-- {Entity}.cs
-- {Entity}Repository.cs
-- I{Entity}Repository.cs
-- DbContext.cs + DbSet<{Entity}>
+Add a definition for a entity to the definition file (`EntityDefinitions.txt`). Save the file, build the solution and following files are generated:
+- {Entity}.cs inside `TexTran.Data.Abstractions\Entities`
+- {Entity}Repository.cs inside `TexTran.Data.Access\Repositories`
+- I{Entity}Repository.cs inside `TexTran.Data.Abstractions\Interfaces`
+- DbContext.cs + DbSet<{Entity}> inside `TexTran.Data.Access\Context` 
 - If you add a `IEntityTypeConfiguration<{Entity}>` this will also be added to the `OnModelCreating()` of the generated `DbContext` 
 
 Example Entity defintion file:
@@ -56,14 +56,14 @@ namespace TexTran.Data.Abstractions.Entities
 	}
 }
 ```
-After adding more content to the definitions, just run `Build > Transform all T4 templates` or build the solution to re-generate all code. If you added an `Entity`, there will also be a `DbSet<Entity>` added to the generated DbContext. `EntityTypeConfigurations` have to be written manually, but are automatically added to the context when transforming the templates.
+After adding more content to the definitions, just run `Build > Transform all T4 templates` or build the solution to re-generate all code. If you added an `Entity`, there will also be a `DbSet<Entity>` added to the generated DbContext. `EntityTypeConfigurations` have to be written manually, but these are also added to the `DbContext` when transforming the templates.
 
 ### Set up DB
 
 You can set the DbContextName in `TexTran.Transformer.TransformManager.ttinclude`.
-Add your entities to the definition files and run a `Add-Migration Initial` command in the Package Manager Console followed by `Update-Database` to create the database.
+Add your entities to the definition files and run a `Add-Migration Initial` command in the Package Manager Console followed by `Update-Database` to create the database. Don't forget to create a migration every time you change the database model.
 
 ## TO DO
 
-- Implement service layer 
 - Implement AutoMapper + auto generate mappings
+- Complete the Service layer
