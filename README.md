@@ -36,9 +36,6 @@ Order // Description of order
 	Quantity : int?
 ```
 
-In this project, Entities are generated in separate files. 
-Models/Enums for example are generated in a single CS file, but this can be changed as needed.
-
 Generated Entity example:
 ``` csharp
 // This file is auto generated. Changes to these files will be lost! 
@@ -60,6 +57,6 @@ namespace TexTran.Data.Abstractions.Entities
 	}
 }
 ```
-After adding more content to the definitions, just run `Build > Transform all T4 templates` or build your solution to re-generate all code. If you added an Entity, there will also be a DbSet<Entity> added to the generated DbContext, same counts for IEntityTypeConfigurations.
+After adding more content to the definitions, just run `Build > Transform all T4 templates` or build the solution to re-generate all code. If you added an Entity, there will also be a DbSet<Entity> added to the generated DbContext. EntityTypeConfigurations have to be written manually, but are automatically added to the context when transforming templated.
 
 ** This is still a work in progress **
