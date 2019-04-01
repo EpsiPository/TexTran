@@ -4,9 +4,9 @@ TexTran is a project that contains text transformation templates to generate cla
 
 Currently generated: 
 - Entities
-- Models
 - Enums
-- DbContext + DbSets
+- Repositories
+- DbContext + DbSets + EntityTypeconfigurations
 
 ## Technologies
 
@@ -15,16 +15,16 @@ Currently generated:
 - AutoT4 1.2.2
 
 ## Usage
+### Entity example
+
+Add a definition for a entity to the definition file (EntityDefinitions.txt). Just build the solution and following code is generated:
+- {Entity}.cs
+- {Entity}Repository.cs
+- DbContext => DbSet<{Entity}>
 
 Example Entity defintion file:
 
 ``` txt
-User
-	FirstName : string
-	LastName : string
-	Email : string
-	Phone : string
-
 Product
 	Name : string
 	Price : decimal
@@ -57,6 +57,14 @@ namespace TexTran.Data.Abstractions.Entities
 	}
 }
 ```
-After adding more content to the definitions, just run `Build > Transform all T4 templates` or build the solution to re-generate all code. If you added an Entity, there will also be a DbSet<Entity> added to the generated DbContext. EntityTypeConfigurations have to be written manually, but are automatically added to the context when transforming templated.
+After adding more content to the definitions, just run `Build > Transform all T4 templates` or build the solution to re-generate all code. If you added an Entity, there will also be a DbSet<Entity> added to the generated DbContext. EntityTypeConfigurations have to be written manually, but are automatically added to the context when transforming the templates.
 
-** This is still a work in progress **
+### Set up DB
+
+You can set the DbContextName in TexTran.Transformer.TransformManager.ttinclude.
+Add your entities to the definition files and run a 'Add-Migration Initial" command in the Package Manager Console followed by 'Update-Database' to create the database.
+
+## TO DO
+
+- Implement service layer
+- Implement AutoMapper + auto generate mappings
