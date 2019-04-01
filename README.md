@@ -2,12 +2,6 @@
 
 TexTran is a project that contains text transformation templates to generate classes from simple definitions. I started this project to discover what `T4` has to offer and how I can use this in future projects.
 
-Currently generated: 
-- Entities
-- Enums
-- Repositories
-- DbContext + DbSets + EntityTypeConfigurations
-
 ## Technologies
 
 - .NET Core 2.2
@@ -17,10 +11,11 @@ Currently generated:
 ## Usage
 ### Entity example
 
-Add a definition for a entity to the definition file (`EntityDefinitions.txt`). Just build the solution and following code is generated:
+Add a definition for a entity to the definition file (`EntityDefinitions.txt`). Just build the solution and following files are generated:
 - {Entity}.cs
 - {Entity}Repository.cs
 - DbContext + DbSet<{Entity}>
+- If you add a `IEntityTypeConfiguration<{Entity}>` this will also be added to the `OnModelCreating()` of the generated `DbContext`
 
 Example Entity defintion file:
 
