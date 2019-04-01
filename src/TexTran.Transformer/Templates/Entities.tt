@@ -1,4 +1,4 @@
-﻿<#@ include file="Manager.tt" #>
+﻿<#@ include file="TransformManager.tt" #>
 <#
 RemoveFilesFromFolder(entitiesFolder);
 WriteToFolder(entityBaseFolder, "BaseEntity", CreateBaseEntity());

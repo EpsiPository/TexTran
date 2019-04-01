@@ -14,7 +14,7 @@
     <None Remove="Templates\DbContext.tt" />
     <None Remove="Templates\Entities.tt" />
     <None Remove="Templates\Enums.tt" />
-    <None Remove="Templates\Manager.tt" />
+    <None Remove="Templates\TransformManager.tt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Templates\DbContext.tt">
@@ -29,9 +29,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Enums.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\Manager.tt">
+    <Content Include="Templates\TransformManager.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Manager.cs</LastGenOutput>
+      <LastGenOutput>TransformManager.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -53,10 +53,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Enums.tt</DependentUpon>
     </Compile>
-    <Compile Update="Templates\Manager.cs">
+    <Compile Update="Templates\TransformManager.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Manager.tt</DependentUpon>
+      <DependentUpon>TransformManager.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
