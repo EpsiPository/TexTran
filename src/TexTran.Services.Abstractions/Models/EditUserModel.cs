@@ -5,10 +5,12 @@ using System.Collections.Generic;
 namespace TexTran.Data.Abstractions.Entities
 {
 	/// <summary>
-	/// Create a new user
+	/// Edit a existing user
 	/// </summary>
-	public class CreateUser
+	public class EditUserModel
 	{
+		public Guid Id  { get; set; }
+			
 		public string FirstName  { get; set; }
 			
 		public string LastName  { get; set; }
