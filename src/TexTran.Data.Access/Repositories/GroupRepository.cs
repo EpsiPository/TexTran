@@ -1,12 +1,13 @@
 //This code is auto generated. Changes to this file will be lost!
 using System;
 using System.Linq;
+using TexTran.Data.Abstractions.Interfaces;
 using TexTran.Data.Abstractions.Entities;
 using TextTran.Data.Access.Context;
 
 namespace TexTran.Data.Access.Repositories
 {
-	public class GroupRepository
+	public class GroupRepository: IGroupRepository
 	{
 		private readonly TexTranContext _context;
 

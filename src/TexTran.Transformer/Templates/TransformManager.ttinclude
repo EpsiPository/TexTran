@@ -16,6 +16,7 @@ var enumsFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstra
 var contextFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Access\Context");
 var repositoryFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Access\Repositories");
 var configurationsFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Access\Configurations");
+var repositoryInterfaceFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Abstractions\Interfaces");
 
 var entityPaths = Directory.GetFiles(entitiesFolder);
 var configurationPaths = Directory.GetFiles(configurationsFolder);

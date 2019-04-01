@@ -2,21 +2,23 @@
 <#
 RemoveFilesFromFolder(repositoryFolder);
 
-if (entityNames != null){
+if (entityNames != null)
+{
 foreach (var entity in entityNames)
 {
 	EnsureDbContextCreated(contextName);
 	var entityName = entity.Replace(".cs", "");
-	var stringBuilder = new StringBuilder();
-	stringBuilder.AppendLine($@"//This code is auto generated. Changes to this file will be lost!
+	var repositoryBuilder = new StringBuilder();
+	repositoryBuilder.AppendLine($@"//This code is auto generated. Changes to this file will be lost!
 using System;
 using System.Linq;
+using TexTran.Data.Abstractions.Interfaces;
 using TexTran.Data.Abstractions.Entities;
 using TextTran.Data.Access.Context;
 
 namespace TexTran.Data.Access.Repositories
 {{
-	public class {entityName}Repository
+	public class {entityName}Repository: I{entityName}Repository
 	{{
 		private readonly {contextName} _context;
 
@@ -49,8 +51,29 @@ namespace TexTran.Data.Access.Repositories
 		public void SaveChanges() => _context.SaveChanges();
 	}}
 }}");
+var interfaceBuilder = new StringBuilder();
+interfaceBuilder.AppendLine($@"//This code is auto generated. Changes to this file will be lost!
+using System;
+using TexTran.Data.Abstractions.Entities;
 
-WriteToFolder(repositoryFolder, entity.Replace(".cs", "") + "Repository" , stringBuilder.ToString());
+namespace TexTran.Data.Abstractions.Interfaces
+{{
+	public interface I{entityName}Repository
+	{{
+		void Add({entityName} {entityName.ToLower()});
+
+		void Delete({entityName} {entityName.ToLower()});
+
+		void Edit({entityName} {entityName.ToLower()});
+
+		{entityName} GetById(Guid id);
+
+		void SaveChanges();
+	}}
+}}");
+
+WriteToFolder(repositoryInterfaceFolder, "I" + entity.Replace(".cs", "") + "Repository", interfaceBuilder.ToString());
+WriteToFolder(repositoryFolder, entity.Replace(".cs", "") + "Repository" , repositoryBuilder.ToString());
 }
 }
 #>
