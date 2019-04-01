@@ -1,12 +1,12 @@
 # TexTran
 
-TexTran is a project that contains text transformation templates to generate classes from simple definitions. I started this project to discover what T4 has to offer and how I can use this in future projects.
+TexTran is a project that contains text transformation templates to generate classes from simple definitions. I started this project to discover what `T4` has to offer and how I can use this in future projects.
 
 Currently generated: 
 - Entities
 - Enums
 - Repositories
-- DbContext + DbSets + EntityTypeconfigurations
+- DbContext + DbSets + EntityTypeConfigurations
 
 ## Technologies
 
@@ -17,10 +17,10 @@ Currently generated:
 ## Usage
 ### Entity example
 
-Add a definition for a entity to the definition file (EntityDefinitions.txt). Just build the solution and following code is generated:
+Add a definition for a entity to the definition file (`EntityDefinitions.txt`). Just build the solution and following code is generated:
 - {Entity}.cs
 - {Entity}Repository.cs
-- DbContext => DbSet<{Entity}>
+- DbContext + DbSet<{Entity}>
 
 Example Entity defintion file:
 
@@ -57,12 +57,12 @@ namespace TexTran.Data.Abstractions.Entities
 	}
 }
 ```
-After adding more content to the definitions, just run `Build > Transform all T4 templates` or build the solution to re-generate all code. If you added an Entity, there will also be a DbSet<Entity> added to the generated DbContext. EntityTypeConfigurations have to be written manually, but are automatically added to the context when transforming the templates.
+After adding more content to the definitions, just run `Build > Transform all T4 templates` or build the solution to re-generate all code. If you added an `Entity`, there will also be a `DbSet<Entity>` added to the generated DbContext. `EntityTypeConfigurations` have to be written manually, but are automatically added to the context when transforming the templates.
 
 ### Set up DB
 
-You can set the DbContextName in TexTran.Transformer.TransformManager.ttinclude.
-Add your entities to the definition files and run a 'Add-Migration Initial" command in the Package Manager Console followed by 'Update-Database' to create the database.
+You can set the DbContextName in `TexTran.Transformer.TransformManager.ttinclude`.
+Add your entities to the definition files and run a `Add-Migration Initial` command in the Package Manager Console followed by `Update-Database` to create the database.
 
 ## TO DO
 
