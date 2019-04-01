@@ -1,0 +1,11 @@
+﻿CreateUser // Create a new user
+	FirstName : string
+	LastName : string
+	EmailAddress : string
+
+
+EditUser // Edit a existing user
+	Id : Guid
+	FirstName : string
+	LastName : string
+	EmailAddress : string

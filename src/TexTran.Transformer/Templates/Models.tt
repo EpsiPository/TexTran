@@ -1,0 +1,46 @@
+﻿<#@ include file="TransformManager.ttinclude" #>
+<#
+RemoveFilesFromFolder(modelFolder);
+
+List<ModelDefinition> models = GenerateModels(modelLines); 
+
+if(models != null)
+{
+foreach (var model in models)
+{
+	var builder = new StringBuilder();
+	builder.AppendLine(@"// This file is auto generated. Changes to this file will be lost!
+using System;
+using System.Collections.Generic;
+	
+namespace TexTran.Data.Abstractions.Entities
+{");
+	if (!string.IsNullOrEmpty(model.Summary))
+	{
+	var summary = Regex.Replace(model.Summary, "// ", "");
+		builder.AppendLine($@"	/// <summary>
+	/// {summary}
+	/// </summary>");
+	}
+	builder.AppendLine($@"	public class {(model.Name).Trim()}
+	{{");
+	foreach (var property in model.Properties)
+	{
+		if (property.Nullable)
+		{
+			builder.AppendLine($@"		public {property.Type}? {property.Name} {{ get; set; }}
+			");
+		}
+		else
+		{
+			builder.AppendLine($@"		public {property.Type} {property.Name} {{ get; set; }}
+			");
+		}
+	}
+	builder.AppendLine(@"	}
+}");
+
+	WriteToFolder(modelFolder, model.Name, builder.ToString());
+}
+}
+#>

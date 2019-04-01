@@ -11,6 +11,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Data.Abstractions",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Transformer", "src\TexTran.Transformer\TexTran.Transformer.csproj", "{4FE1E2DC-1020-40CE-84B5-CE24A25CEFB7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 DATA", "00 DATA", "{0AFDB5F4-F6E9-4740-9875-0B8D5E78314A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Service", "01 Service", "{4EB5356C-6DCF-4C99-A666-A7BC96E92827}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Transformations", "02 Transformations", "{49C78D88-8F59-4C88-9DA2-D13C497B6482}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Host", "03 Host", "{E475C9BE-57AA-49A0-A56C-07B8F7D7FBA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexTran.Service.Services", "src\TexTran.Service.Services\TexTran.Service.Services.csproj", "{4C48BA98-3B51-4E80-9E68-7856E6882CB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexTran.Service.Abstractions", "src\TexTran.Services.Abstractions\TexTran.Service.Abstractions.csproj", "{1792B377-BC92-4548-A049-B2CA4D9E8206}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +45,25 @@ Global
 		{4FE1E2DC-1020-40CE-84B5-CE24A25CEFB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FE1E2DC-1020-40CE-84B5-CE24A25CEFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FE1E2DC-1020-40CE-84B5-CE24A25CEFB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C48BA98-3B51-4E80-9E68-7856E6882CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C48BA98-3B51-4E80-9E68-7856E6882CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C48BA98-3B51-4E80-9E68-7856E6882CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C48BA98-3B51-4E80-9E68-7856E6882CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1792B377-BC92-4548-A049-B2CA4D9E8206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1792B377-BC92-4548-A049-B2CA4D9E8206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1792B377-BC92-4548-A049-B2CA4D9E8206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1792B377-BC92-4548-A049-B2CA4D9E8206}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EFFF8586-45CA-4AE9-A96D-5F021359BB8E} = {0AFDB5F4-F6E9-4740-9875-0B8D5E78314A}
+		{E63CCC98-85DC-45B7-8795-1CAB78FEEB27} = {E475C9BE-57AA-49A0-A56C-07B8F7D7FBA5}
+		{7D844234-E1E0-46E9-A079-2B4D6E0AA432} = {0AFDB5F4-F6E9-4740-9875-0B8D5E78314A}
+		{4FE1E2DC-1020-40CE-84B5-CE24A25CEFB7} = {49C78D88-8F59-4C88-9DA2-D13C497B6482}
+		{4C48BA98-3B51-4E80-9E68-7856E6882CB4} = {4EB5356C-6DCF-4C99-A666-A7BC96E92827}
+		{1792B377-BC92-4548-A049-B2CA4D9E8206} = {4EB5356C-6DCF-4C99-A666-A7BC96E92827}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCCA928D-E66F-4C6D-B6B7-74C00F613572}

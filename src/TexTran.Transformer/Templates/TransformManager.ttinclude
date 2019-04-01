@@ -17,6 +17,7 @@ var contextFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Acce
 var repositoryFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Access\Repositories");
 var configurationsFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Access\Configurations");
 var repositoryInterfaceFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Abstractions\Interfaces");
+var modelFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Services.Abstractions\Models");
 
 var entityPaths = Directory.GetFiles(entitiesFolder);
 var configurationPaths = Directory.GetFiles(configurationsFolder);
@@ -26,6 +27,9 @@ var configurations = configurationPaths.Select(x => Path.GetFileName(x));
 
 var entityDefinitions = this.Host.ResolvePath(@"..\Definitions\EntityDefinitions.txt");
 var entityLines = File.ReadLines(entityDefinitions).ToArray();
+
+var modelDefinitions = this.Host.ResolvePath(@"..\Definitions\ModelDefinitions.txt");
+var modelLines = File.ReadLines(modelDefinitions).ToArray();
 
 string enumsDefinitions = this.Host.ResolvePath(@"..\Definitions\EnumDefinitions.txt");
 var enumLines = File.ReadLines(enumsDefinitions).ToArray();
@@ -95,6 +99,35 @@ public List<EntityDefinition> GenerateEntities(string[] lines)
 			var matchSummary = Regex.Match(line, @"//.+");
 			
 			var entity = new EntityDefinition
+			{
+				Summary = matchSummary.Success ? matchSummary.Value : string.Empty,
+				Name = Regex.Replace(line, @"//.+", ""),
+				Properties = GetProperties(lineNumber, lines)
+			};
+
+			result.Add(entity);
+		}
+	}
+	return result;
+}
+
+public List<ModelDefinition> GenerateModels(string[] lines)
+{
+	List<ModelDefinition> result = new List<ModelDefinition>();
+	var lineNumber = -1;
+
+	foreach(var line in lines)
+	{
+		lineNumber++;
+		if (String.IsNullOrEmpty(line)) continue;
+		
+		var matchEntity = Regex.Match(line, @"^\s+");
+
+		if(!matchEntity.Success)
+		{
+			var matchSummary = Regex.Match(line, @"//.+");
+			
+			var entity = new ModelDefinition
 			{
 				Summary = matchSummary.Success ? matchSummary.Value : string.Empty,
 				Name = Regex.Replace(line, @"//.+", ""),

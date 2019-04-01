@@ -42,4 +42,11 @@ public class EnumConstantDefinition
 	public string Name { get; set; }
 	public string Value { get; set; }
 }
+
+public class ModelDefinition
+{
+	public string Name { get; set; }
+	public PropertyDefinition[] Properties { get; set; }
+	public string Summary { get; set; }
+}
 #>
