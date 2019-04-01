@@ -7,8 +7,6 @@ List<EntityDefinition> entities = GenerateEntities(entityLines);
 
 if(entities != null)
 {
-
-
 foreach (var entity in entities)
 {
 	var builder = new StringBuilder();

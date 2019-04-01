@@ -9,6 +9,7 @@ namespace TexTran.Data.Access.Repositories
 	public class UserRepository
 	{
 		private readonly TexTranContext _context;
+
 		public UserRepository(TexTranContext context)
 		{
 			_context = context;

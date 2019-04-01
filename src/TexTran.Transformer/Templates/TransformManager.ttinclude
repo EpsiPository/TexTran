@@ -23,10 +23,10 @@ var configurationPaths = Directory.GetFiles(configurationsFolder);
 var entityNames = entityPaths.Select(x => Path.GetFileName(x));
 var configurations = configurationPaths.Select(x => Path.GetFileName(x));
 
-var entityDefinitions = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
+var entityDefinitions = this.Host.ResolvePath(@"..\Definitions\EntityDefinitions.txt");
 var entityLines = File.ReadLines(entityDefinitions).ToArray();
 
-string enumsDefinitions = this.Host.ResolvePath(@"..\Definitions\Enums.txt");
+string enumsDefinitions = this.Host.ResolvePath(@"..\Definitions\EnumDefinitions.txt");
 var enumLines = File.ReadLines(enumsDefinitions).ToArray();
 
 void EnsureDbContextCreated(string dbContextName)

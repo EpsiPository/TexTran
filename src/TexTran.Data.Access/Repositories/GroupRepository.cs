@@ -9,6 +9,7 @@ namespace TexTran.Data.Access.Repositories
 	public class GroupRepository
 	{
 		private readonly TexTranContext _context;
+
 		public GroupRepository(TexTranContext context)
 		{
 			_context = context;

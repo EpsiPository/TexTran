@@ -19,6 +19,7 @@ namespace TexTran.Data.Access.Repositories
 	public class {entityName}Repository
 	{{
 		private readonly {contextName} _context;
+
 		public {entityName}Repository({contextName} context)
 		{{
 			_context = context;
