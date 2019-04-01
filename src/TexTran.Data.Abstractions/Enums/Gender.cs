@@ -7,8 +7,7 @@ namespace TextTran.Transformations.Enums
 	{
 		Male = 1,
 		Female = 2,
-		Transypansy = 3,
-		Unknown = 4,
+		Unknown = 3,
 	}
 }
 

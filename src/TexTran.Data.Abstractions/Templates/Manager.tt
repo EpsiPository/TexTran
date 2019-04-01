@@ -5,12 +5,13 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
-
 <#
 var directory = Path.GetDirectoryName(this.Host.TemplateFile);
+
 var entitiesFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
 var entityBaseFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Entities\Base");
 var enumsFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Abstractions\Enums");
+
 var definition = this.Host.ResolvePath(@"..\Definitions\Entities.txt");
 var entityLines = File.ReadLines(definition).ToArray();
 string enumsPath = this.Host.ResolvePath(@"..\Definitions\Enums.txt");

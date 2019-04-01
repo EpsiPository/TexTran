@@ -7,7 +7,6 @@ namespace TextTran.Transformations.Enums
 	{
 		Member = 1,
 		Admin = 2,
-		Loser = 3,
 	}
 }
 
