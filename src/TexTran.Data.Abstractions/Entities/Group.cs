@@ -4,13 +4,11 @@ using System.Collections.Generic;
 	
 namespace TexTran.Data.Abstractions.Entities
 {
-	public class Product : BaseEntity
+	public class Group : BaseEntity
 	{
 		public string Name  { get; set; }
 			
-		public decimal Price  { get; set; }
-			
-		public string Category  { get; set; }
+		public List<User> Members  { get; set; }
 			
 	}
 }

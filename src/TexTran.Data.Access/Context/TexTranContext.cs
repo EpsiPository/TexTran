@@ -1,6 +1,7 @@
 // This code is auto generated. Changes to this file will be lost!
 using Microsoft.EntityFrameworkCore;
 using TexTran.Data.Abstractions.Entities;
+using TexTran.Data.Access.Configurations;
 
 namespace TextTran.Data.Access.Context
 {
@@ -11,8 +12,12 @@ namespace TextTran.Data.Access.Context
 		{
 		}
 
-		public DbSet<Order> Orders { get; set; }
-		public DbSet<Product> Products { get; set; }
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.ApplyConfiguration(new UserConfiguration());
+		}
+
+		public DbSet<Group> Groups { get; set; }
 		public DbSet<User> Users { get; set; }
 	}
 }

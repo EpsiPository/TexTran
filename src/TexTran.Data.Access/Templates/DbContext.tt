@@ -5,9 +5,12 @@ string contextName = "TexTranContext";
 var directory = Path.GetDirectoryName(this.Host.TemplateFile);
 var contextFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Access\Context");
 var entityFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
+var configurationsFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Access\Configurations");
 
 var entityPaths = Directory.GetFiles(entityFolder);
+var configurationPaths = Directory.GetFiles(configurationsFolder);
 var entities = entityPaths.Select(x => Path.GetFileName(x));
+var configurations = configurationPaths.Select(x => Path.GetFileName(x));
 
 RemoveFilesFromFolder(contextFolder);
 
@@ -15,6 +18,7 @@ var stringBuilder = new StringBuilder();
 stringBuilder.AppendLine(@"// This code is auto generated. Changes to this file will be lost!
 using Microsoft.EntityFrameworkCore;
 using TexTran.Data.Abstractions.Entities;
+using TexTran.Data.Access.Configurations;
 
 namespace TextTran.Data.Access.Context
 {
@@ -24,6 +28,19 @@ namespace TextTran.Data.Access.Context
 			: base(options) 
 		{
 		}
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{");
+if(configurations != null)
+{
+	foreach(var configuration in configurations)
+	{
+		var entityTypeConfiguration = configuration.Replace(".cs", "");
+stringBuilder.AppendLine($"			modelBuilder.ApplyConfiguration(new {entityTypeConfiguration}());");
+	}
+}
+			
+stringBuilder.AppendLine(@"		}
 ");
 
 foreach (var item in entities)

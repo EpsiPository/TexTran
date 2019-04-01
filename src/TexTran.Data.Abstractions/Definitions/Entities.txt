@@ -1,15 +1,10 @@
-﻿User // Description of user
+﻿User
 	FirstName : string
 	LastName : string
-	Email : string
+	EmailAddress : string
 	Phone : string
+	Group: Group
 
-Product
+Group
 	Name : string
-	Price : decimal
-	Category : string
-
-Order // Description of order
-	Products : List<Product>
-	Price : decimal
-	Quantity : int?
+	Members : List<User>
