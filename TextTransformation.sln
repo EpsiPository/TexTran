@@ -10,6 +10,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexTran.Data.Abstractions", "src\TexTran.Data.Abstractions\TexTran.Data.Abstractions.csproj", "{7D844234-E1E0-46E9-A079-2B4D6E0AA432}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{631F9E3A-13DE-4D9A-B5BF-970BB7AAF042}"
+	ProjectSection(SolutionItems) = preProject
+		Shared.ttinclude = Shared.ttinclude
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

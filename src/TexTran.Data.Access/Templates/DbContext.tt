@@ -1,7 +1,8 @@
 ﻿<#@ include file="Manager.tt" #>
 <#
-RemoveFilesFromFolder(contextFolder);
+string contextName = "TexTranContext";
 
+RemoveFilesFromFolder(contextFolder);
 var stringBuilder = new StringBuilder();
 stringBuilder.AppendLine(@"// This code is auto generated. Changes to this file will be lost!
 using Microsoft.EntityFrameworkCore;

@@ -3,10 +3,10 @@
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
-<#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ include file="$(SolutionDir)Shared.ttinclude" #>
 <#
-string contextName = "TexTranContext";
 var directory = Path.GetDirectoryName(this.Host.TemplateFile);
 var contextFolder = Regex.Replace(directory, "(?<=src).+$", @"\TexTran.Data.Access\Context");
 var entityFolder = Regex.Replace(directory,"(?<=src).+$", @"\TexTran.Data.Abstractions\Entities");
@@ -16,22 +16,7 @@ var configurationPaths = Directory.GetFiles(configurationsFolder);
 var entities = entityPaths.Select(x => Path.GetFileName(x));
 var configurations = configurationPaths.Select(x => Path.GetFileName(x));
 #>
+
 <#+
 
-public void WriteToFolder(string folder, string fileName, string content)
-{
-	using (FileStream fs = new FileStream(Path.Combine(folder, fileName + ".cs"), FileMode.Create))
-    {
-        using (StreamWriter str = new StreamWriter(fs))
-        {
-            str.WriteLine(content);
-            str.Flush();
-        }
-    }
-}
-
-public void RemoveFilesFromFolder(string path)
-{
-	Array.ForEach(Directory.GetFiles(path), File.Delete);
-}
 #>
