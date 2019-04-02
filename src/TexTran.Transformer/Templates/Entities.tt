@@ -1,5 +1,4 @@
-﻿<#@ include file="TransformManager.ttinclude" #><##>
-<#
+﻿<#@ include file="TransformBuilders.ttinclude" #><##><#
 RemoveFilesFromFolder(entitiesFolder);
 WriteToFolder(entityBaseFolder, "BaseEntity", CreateBaseEntity());
 
@@ -27,7 +26,7 @@ namespace TexTran.Data.Abstractions.Entities
 <#
 	}
 #>
-	public class <#= (entity.Name).Trim() #> : BaseEntity
+	public class <#= entity.Name.Trim() #> : BaseEntity
 	{
 	<#
 	foreach (var property in entity.Properties)
@@ -54,6 +53,6 @@ namespace TexTran.Data.Abstractions.Entities
 	WriteToFolder(entitiesFolder, entity.Name, this.GenerationEnvironment.ToString());
 	this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
 	}
-	EnsureDbContextCreated(contextName);
+	BuildDbContext(contextName);
 }
 #>

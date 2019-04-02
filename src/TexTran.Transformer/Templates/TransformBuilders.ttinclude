@@ -1,0 +1,75 @@
+﻿<#@ include file="TransformManager.ttinclude" #><##><#
+
+string BuildInterface(string entityName)
+{
+var interfaceBuilder = new StringBuilder();
+interfaceBuilder.AppendLine($@"//This code is auto generated. Changes to this file will be lost!
+using System;
+using TexTran.Data.Abstractions.Entities;
+
+namespace TexTran.Data.Abstractions.Interfaces
+{{
+	public interface I{entityName}Repository
+	{{
+		void Add({entityName} {entityName.ToLower()});
+
+		void Delete({entityName} {entityName.ToLower()});
+
+		void Edit({entityName} {entityName.ToLower()});
+
+		{entityName} GetById(Guid id);
+
+		void SaveChanges();
+	}}
+}}");
+
+return interfaceBuilder.ToString();
+}
+
+
+void BuildDbContext(string dbContextName)
+{
+	var stringBuilder = new StringBuilder();
+stringBuilder.AppendLine($@"// This code is auto generated. Changes to this file will be lost!
+using Microsoft.EntityFrameworkCore;
+using TexTran.Data.Abstractions.Entities;
+using TexTran.Data.Access.Configurations;
+
+namespace TextTran.Data.Access.Context
+{{
+	public class {dbContextName} : DbContext
+	{{
+		public {dbContextName}(DbContextOptions options) 
+			: base(options) 
+		{{
+		}}
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{{");
+if(configurations != null)
+{
+	foreach(var configuration in configurations)
+	{
+		var entityTypeConfiguration = configuration.Replace(".cs", "");
+stringBuilder.AppendLine($@"			modelBuilder.ApplyConfiguration(new {entityTypeConfiguration}());");
+	}
+}
+			
+stringBuilder.AppendLine(@"		}
+");
+
+
+foreach (var item in entityNames)
+{
+	var entity = item.Replace(".cs", "");
+	stringBuilder.AppendLine($"		public DbSet<{entity}> {entity}s {{ get; set; }}");
+}
+
+stringBuilder.AppendLine(@"	}
+}");
+
+WriteToFolder(contextFolder, dbContextName, stringBuilder.ToString());
+}
+
+
+#>

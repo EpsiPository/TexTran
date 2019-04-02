@@ -1,18 +1,14 @@
-﻿<#@ include file="TransformManager.ttinclude" #>
-<#
-
+﻿<#@ include file="TransformBuilders.ttinclude" #><##><#
 if (entityNames != null)
 {
 RemoveFilesFromFolder(repositoryFolder);
 RemoveFilesFromFolder(repositoryInterfaceFolder);
 foreach (var entity in entityNames)
 {
-
-
-	EnsureDbContextCreated(contextName);
+	BuildDbContext(contextName);
 	var entityName = entity.Replace(".cs", "");
-	var repositoryBuilder = new StringBuilder();
-	repositoryBuilder.AppendLine($@"//This code is auto generated. Changes to this file will be lost!
+#>
+//This code is auto generated. Changes to this file will be lost!
 using System;
 using System.Linq;
 using TexTran.Data.Abstractions.Interfaces;
@@ -20,63 +16,44 @@ using TexTran.Data.Abstractions.Entities;
 using TextTran.Data.Access.Context;
 
 namespace TexTran.Data.Access.Repositories
-{{
-	public class {entityName}Repository: I{entityName}Repository
-	{{
-		private readonly {contextName} _context;
+{
+	public class <#= entityName #>Repository: I<#= entityName #>Repository
+	{
+		private readonly <#= contextName #> _context;
 
-		public {entityName}Repository({contextName} context)
-		{{
+		public <#= entityName #>Repository(<#= contextName #> context)
+		{
 			_context = context;
-		}}
+		}
 
-		public void Add({entityName} {entityName.ToLower()})
-		{{
-			_context.{entityName}s.Add({entityName.ToLower()});
-		}}
+		public void Add(<#= entityName #> <#= entityName.ToLower() #>)
+		{
+			_context.<#= entityName #>s.Add(<#= entityName.ToLower() #>);
+		}
 
-		public void Delete({entityName} {entityName.ToLower()})
-		{{
-			_context.{entityName}s.Remove({entityName.ToLower()});
-		}}
+		public void Delete(<#= entityName #> <#= entityName.ToLower() #>)
+		{
+			_context.<#= entityName #>s.Remove(<#= entityName.ToLower() #>);
+		}
 
-		public void Edit({entityName} {entityName.ToLower()})
-		{{
-			var editedEntity = _context.{entityName}s.FirstOrDefault(e => e.Id == {entityName.ToLower()}.Id);
-			editedEntity = {entityName.ToLower()};
-		}}
+		public void Edit(<#= entityName #> <#= entityName.ToLower() #>)
+		{
+			var editedEntity = _context.<#= entityName #>s.FirstOrDefault(e => e.Id == <#= entityName.ToLower() #>.Id);
+			editedEntity = <#= entityName.ToLower() #>;
+		}
 
-		public {entityName} GetById(Guid id)
-		{{
-			return _context.{entityName}s.FirstOrDefault(e => e.Id == id);
-		}}
+		public <#= entityName #> GetById(Guid id)
+		{
+			return _context.<#= entityName #>s.FirstOrDefault(e => e.Id == id);
+		}
 
 		public void SaveChanges() => _context.SaveChanges();
-	}}
-}}");
-var interfaceBuilder = new StringBuilder();
-interfaceBuilder.AppendLine($@"//This code is auto generated. Changes to this file will be lost!
-using System;
-using TexTran.Data.Abstractions.Entities;
-
-namespace TexTran.Data.Abstractions.Interfaces
-{{
-	public interface I{entityName}Repository
-	{{
-		void Add({entityName} {entityName.ToLower()});
-
-		void Delete({entityName} {entityName.ToLower()});
-
-		void Edit({entityName} {entityName.ToLower()});
-
-		{entityName} GetById(Guid id);
-
-		void SaveChanges();
-	}}
-}}");
-
-WriteToFolder(repositoryInterfaceFolder, "I" + entity.Replace(".cs", "") + "Repository", interfaceBuilder.ToString());
-WriteToFolder(repositoryFolder, entity.Replace(".cs", "") + "Repository" , repositoryBuilder.ToString());
+	}
 }
+<#
+WriteToFolder(repositoryFolder, entityName + "Repository" , this.GenerationEnvironment.ToString());
+WriteToFolder(repositoryInterfaceFolder, "I" + entityName + "Repository", BuildInterface(entityName));
+this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+	}
 }
 #>
