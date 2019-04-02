@@ -1,11 +1,14 @@
 ﻿<#@ include file="TransformManager.ttinclude" #>
 <#
-RemoveFilesFromFolder(repositoryFolder);
 
 if (entityNames != null)
 {
+RemoveFilesFromFolder(repositoryFolder);
+RemoveFilesFromFolder(repositoryInterfaceFolder);
 foreach (var entity in entityNames)
 {
+
+
 	EnsureDbContextCreated(contextName);
 	var entityName = entity.Replace(".cs", "");
 	var repositoryBuilder = new StringBuilder();

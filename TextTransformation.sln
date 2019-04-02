@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Host", "03 Host", "{E475
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexTran.Service.Services", "src\TexTran.Service.Services\TexTran.Service.Services.csproj", "{4C48BA98-3B51-4E80-9E68-7856E6882CB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexTran.Service.Abstractions", "src\TexTran.Services.Abstractions\TexTran.Service.Abstractions.csproj", "{1792B377-BC92-4548-A049-B2CA4D9E8206}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexTran.Service.Abstractions", "src\TexTran.Service.Abstractions\TexTran.Service.Abstractions.csproj", "{1792B377-BC92-4548-A049-B2CA4D9E8206}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

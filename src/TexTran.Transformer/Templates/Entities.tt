@@ -1,4 +1,4 @@
-﻿<#@ include file="TransformManager.ttinclude" #>
+﻿<#@ include file="TransformManager.ttinclude" #><##>
 <#
 RemoveFilesFromFolder(entitiesFolder);
 WriteToFolder(entityBaseFolder, "BaseEntity", CreateBaseEntity());
@@ -7,43 +7,53 @@ List<EntityDefinition> entities = GenerateEntities(entityLines);
 
 if(entities != null)
 {
-foreach (var entity in entities)
-{
-	var builder = new StringBuilder();
-	builder.AppendLine(@"// This file is auto generated. Changes to this file will be lost!
+	foreach (var entity in entities)
+	{
+#>
+// This file is auto generated. Changes to this file will be lost!
 using System;
-using TextTran.Transformations.Enums;
 using System.Collections.Generic;
+using TextTran.Transformations.Enums;
 	
 namespace TexTran.Data.Abstractions.Entities
-{");
+{
+<#
 	if (!string.IsNullOrEmpty(entity.Summary))
 	{
-	var summary = Regex.Replace(entity.Summary, "// ", "");
-		builder.AppendLine($@"	/// <summary>
-	/// {summary}
+#>
+	/// <summery>
+	/// <#= Regex.Replace(entity.Summary, "// ", "") #>
 	/// </summary>");
+<#
 	}
-	builder.AppendLine($@"	public class {(entity.Name).Trim()} : BaseEntity
-	{{");
+#>
+	public class <#= (entity.Name).Trim() #> : BaseEntity
+	{
+	<#
 	foreach (var property in entity.Properties)
 	{
 		if (property.Nullable)
 		{
-			builder.AppendLine($@"		public {property.Type}? {property.Name} {{ get; set; }}
-			");
+#>
+		public <#= property.Type #>? <#= property.Name #> { get; set; }
+
+<#
 		}
 		else
 		{
-			builder.AppendLine($@"		public {property.Type} {property.Name} {{ get; set; }}
-			");
+#>
+		public <#= property.Type #> <#= property.Name #> { get; set; }
+
+<#
 		}
 	}
-	builder.AppendLine(@"	}
-}");
-
-	WriteToFolder(entitiesFolder, entity.Name, builder.ToString());
+#>
+	}
 }
+<#
+	WriteToFolder(entitiesFolder, entity.Name, this.GenerationEnvironment.ToString());
+	this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+	}
 	EnsureDbContextCreated(contextName);
 }
 #>

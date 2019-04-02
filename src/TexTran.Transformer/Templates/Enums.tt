@@ -1,26 +1,29 @@
-﻿<#@ include file="TransformManager.ttinclude" #>
+﻿<#@ include file="TransformManager.ttinclude" #><##>
 <#
 RemoveFilesFromFolder(enumsFolder);
 List<EnumDefinition> enums = GenerateEnums(enumLines); 
-
 foreach (var item in enums)
 {
-	var stringBuilder = new StringBuilder();
-	
-	stringBuilder.AppendLine(@"//  This file is auto generated. Changes to this file will be lost!
+#>
+//  This file is auto generated. Changes to this file will be lost!
 using System;
 	
 namespace TextTran.Transformations.Enums
-{");
-	stringBuilder.AppendLine($@"	public enum {item.Name}
-	{{");
-	
+{
+	public enum <#= item.Name #>
+	{
+<#
 	foreach(var constant in item.Constants)
 	{
-stringBuilder.AppendLine($"		{constant.Name} = {constant.Value},");
+#>
+		<#= constant.Name #> = <#= constant.Value #>,
+<#
 	}
-	stringBuilder.AppendLine(@"	}
-}");
-	WriteToFolder(enumsFolder, item.Name, stringBuilder.ToString());
+#>
+	}
+}
+<#
+		WriteToFolder(enumsFolder, item.Name, this.GenerationEnvironment.ToString());
+		this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
 }
 #>
