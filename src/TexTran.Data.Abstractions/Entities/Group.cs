@@ -7,8 +7,10 @@ namespace TexTran.Data.Abstractions.Entities
 {
 	public class Group : BaseEntity
 	{
-			public string Name  { get; set; }
+			
+		public string Name  { get; set; }
 
+		
 		public List<User> Members  { get; set; }
 
 	}

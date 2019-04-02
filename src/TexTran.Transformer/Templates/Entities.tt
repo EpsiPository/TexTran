@@ -20,9 +20,9 @@ namespace TexTran.Data.Abstractions.Entities
 	if (!string.IsNullOrEmpty(entity.Summary))
 	{
 #>
-	/// <summery>
+	/// <summary>
 	/// <#= Regex.Replace(entity.Summary, "// ", "") #>
-	/// </summary>");
+	/// </summary>
 <#
 	}
 #>
@@ -33,14 +33,14 @@ namespace TexTran.Data.Abstractions.Entities
 	{
 		if (property.Nullable)
 		{
-#>
+#>		
 		public <#= property.Type #>? <#= property.Name #> { get; set; }
 
 <#
-		}
+	}
 		else
 		{
-#>
+#>		
 		public <#= property.Type #> <#= property.Name #> { get; set; }
 
 <#
