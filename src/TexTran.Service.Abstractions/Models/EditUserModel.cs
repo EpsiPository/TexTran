@@ -10,13 +10,9 @@ namespace TexTran.Data.Abstractions.Entities
 	public class EditUserModel
 	{
 		public Guid Id  { get; set; }
-			
 		public string FirstName  { get; set; }
-			
 		public string LastName  { get; set; }
-			
 		public string EmailAddress  { get; set; }
-			
 	}
 }
 

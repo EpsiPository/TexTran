@@ -1,46 +1,54 @@
 ﻿<#@ include file="TransformManager.ttinclude" #>
 <#
 RemoveFilesFromFolder(modelFolder);
-
 List<ModelDefinition> models = GenerateModels(modelLines); 
 
 if(models != null)
 {
-foreach (var model in models)
-{
-	var builder = new StringBuilder();
-	builder.AppendLine(@"// This file is auto generated. Changes to this file will be lost!
+	foreach (var model in models)
+	{
+#>
+// This file is auto generated. Changes to this file will be lost!
 using System;
 using System.Collections.Generic;
 	
 namespace TexTran.Data.Abstractions.Entities
-{");
+{
+<#
 	if (!string.IsNullOrEmpty(model.Summary))
 	{
 	var summary = Regex.Replace(model.Summary, "// ", "");
-		builder.AppendLine($@"	/// <summary>
-	/// {summary}
-	/// </summary>");
+#>
+	/// <summary>
+	/// <#= summary #>
+	/// </summary>
+<#
 	}
-	builder.AppendLine($@"	public class {(model.Name).Trim()}
-	{{");
+#>
+	public class <#= (model.Name).Trim() #>
+	{
+<#
 	foreach (var property in model.Properties)
 	{
 		if (property.Nullable)
 		{
-			builder.AppendLine($@"		public {property.Type}? {property.Name} {{ get; set; }}
-			");
+#>
+		public <#= property.Type #>? <#= property.Name #> { get; set; }
+<#
 		}
 		else
 		{
-			builder.AppendLine($@"		public {property.Type} {property.Name} {{ get; set; }}
-			");
+#>
+		public <#= property.Type #> <#= property.Name #> { get; set; }
+<#
 		}
 	}
-	builder.AppendLine(@"	}
-}");
-
-	SaveFile(modelFolder, model.Name, builder.ToString());
+#>
+	}
 }
+<#
+	SaveFile(modelFolder, model.Name, this.GenerationEnvironment.ToString());
+	this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+	}
 }
 #>

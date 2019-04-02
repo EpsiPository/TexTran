@@ -9,7 +9,7 @@ var contextPath = @"\TexTran.Data.Access\Context";
 var repositoryPath = @"\TexTran.Data.Access\Repositories";
 var configurationPath = @"\TexTran.Data.Access\Configurations";
 var interfacePath = @"\TexTran.Data.Abstractions\Interfaces";
-var modelPath = @"\TexTran.Data.Access\Repositories";
+var modelPath = @"\TexTran.Service.Abstractions\Models";
 
 var directory = Path.GetDirectoryName(this.Host.TemplateFile);
 
