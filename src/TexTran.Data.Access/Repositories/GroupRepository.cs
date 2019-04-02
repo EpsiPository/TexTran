@@ -38,6 +38,11 @@ namespace TexTran.Data.Access.Repositories
 			return _context.Groups.FirstOrDefault(e => e.Id == id);
 		}
 
+		public Group[] GetAll()
+		{
+			return _context.Groups.ToArray();
+		}
+
 		public void SaveChanges() => _context.SaveChanges();
 	}
 }

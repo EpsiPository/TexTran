@@ -37,6 +37,11 @@ namespace TexTran.Data.Access.Repositories
 			return _context.Users.FirstOrDefault(e => e.Id == id);
 		}
 
+		public User[] GetAll()
+		{
+			return _context.Users.ToArray();
+		}
+
 		public void SaveChanges() => _context.SaveChanges();
 	}
 }

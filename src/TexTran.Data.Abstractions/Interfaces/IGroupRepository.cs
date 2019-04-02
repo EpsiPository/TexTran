@@ -14,6 +14,8 @@ namespace TexTran.Data.Abstractions.Interfaces
 
 		Group GetById(Guid id);
 
+		Group[] GetAll();
+
 		void SaveChanges();
 	}
 }

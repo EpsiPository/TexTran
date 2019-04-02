@@ -14,6 +14,8 @@ namespace TexTran.Data.Abstractions.Interfaces
 
 		User GetById(Guid id);
 
+		User[] GetAll();
+
 		void SaveChanges();
 	}
 }
