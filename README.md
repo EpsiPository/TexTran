@@ -10,7 +10,7 @@ TexTran is a project that contains `T4 templates` to generate classes from simpl
 
 ## Usage
 
-Just define your classes in the definition files, and build the solution.
+Just define classes in the definition files, and build the solution.
 
 ### Entity example
 
@@ -56,11 +56,11 @@ namespace TexTran.Data.Abstractions.Entities
 	}
 }
 ```
-After adding more content to the definitions, just run `Build > Transform all T4 templates` or build the solution to re-generate all code. If you added an `Entity`, there will also be a `DbSet<Entity>` added to the generated DbContext. `EntityTypeConfigurations` have to be written manually, but these are also added to the `DbContext` when transforming the templates.
+After adding more content to the definitions, just run `Build > Transform all T4 templates` or build the solution to re-generate all code. If you added an `Entity`, there will also be a `DbSet<Entity>` added to the generated DbContext. `EntityTypeConfigurations` have to be written manually, but these are also added to the `DbContext` when transforming the templates. 
 
 ### Set up DB
 
-You can set the DbContextName in `TexTran.Transformer.TransformManager.ttinclude`.
+You can set the DbContextName in `TexTran.Transformer.TransformDirectives.ttinclude`.
 Add your entities to the definition files and run a `Add-Migration Initial` command in the Package Manager Console followed by `Update-Database` to create the database. Don't forget to create a migration every time you change the database model.
 
 ## TO DO
