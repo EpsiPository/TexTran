@@ -21,7 +21,7 @@ Add a definition for a entity to the definition file (`EntityDefinitions.txt`). 
 - DbContext.cs + DbSet<{Entity}> inside `TexTran.Data.Access\Context` 
 - If you add a `IEntityTypeConfiguration<{Entity}>` this will also be added to the `OnModelCreating()` of the generated `DbContext` 
 
-Example Entity defintion file:
+Example Entity definition file:
 
 ``` txt
 User // Description goes here
