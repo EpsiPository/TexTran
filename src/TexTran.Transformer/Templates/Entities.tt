@@ -35,14 +35,12 @@ namespace TexTran.Data.Abstractions.Entities
 		{
 #>		
 		public <#= property.Type #>? <#= property.Name #> { get; set; }
-
 <#
 	}
 		else
 		{
 #>		
 		public <#= property.Type #> <#= property.Name #> { get; set; }
-
 <#
 		}
 	}

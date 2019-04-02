@@ -12,25 +12,18 @@ namespace TexTran.Data.Abstractions.Entities
 	{
 			
 		public string FirstName  { get; set; }
-
 		
 		public string LastName  { get; set; }
-
 		
 		public string EmailAddress  { get; set; }
-
 		
 		public DateTimeOffset DateOfBirth  { get; set; }
-
 		
 		public Gender Gender { get; set; }
-
 		
 		public Group Group  { get; set; }
-
 		
 		public int? NullableNumber  { get; set; }
-
 	}
 }
 
