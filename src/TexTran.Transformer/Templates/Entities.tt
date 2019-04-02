@@ -1,6 +1,6 @@
 ﻿<#@ include file="TransformBuilders.ttinclude" #><##><#
 RemoveFilesFromFolder(entitiesFolder);
-SaveFile(entityBaseFolder, "BaseEntity", CreateBaseEntity());
+SaveFile(entityBaseFolder, "BaseEntity", BuildBaseEntity());
 
 List<EntityDefinition> entities = GenerateEntities(entityLines); 
 

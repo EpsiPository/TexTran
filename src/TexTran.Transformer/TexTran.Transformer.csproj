@@ -50,6 +50,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Enums.tt</DependentUpon>
     </Compile>
+    <Compile Update="Templates\TransformManager.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TransformManager.ttinclude</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Update="Templates\Models.tt">

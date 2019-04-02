@@ -73,5 +73,24 @@ stringBuilder.AppendLine(@"	}
 SaveFile(contextFolder, dbContextName, stringBuilder.ToString());
 }
 
+string BuildBaseEntity()
+{
+	var builder = new StringBuilder();
+	builder.AppendLine(@"// This file is auto generated. Changes to this file will be lost!
+using System;
+
+namespace TexTran.Data.Abstractions.Entities
+{
+    public class BaseEntity
+    {
+        public Guid Id { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+        public bool Deleted { get; set; }
+    }
+}");
+	return builder.ToString();
+}
 
 #>
