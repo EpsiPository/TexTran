@@ -10,7 +10,8 @@ TexTran is a project that contains `T4 templates` to generate classes from simpl
 
 ## Usage
 
-Just define classes in the definition files, and build the solution.
+Define classes in the definition files, and build the solution.
+If you want to use the `.tt` files in your project, adjust the `TransformSetup.tt` file to your needs.
 
 ### Entity example
 
