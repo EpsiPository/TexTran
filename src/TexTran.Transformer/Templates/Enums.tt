@@ -23,7 +23,7 @@ namespace TextTran.Transformations.Enums
 	}
 }
 <#
-		WriteToFolder(enumsFolder, item.Name, this.GenerationEnvironment.ToString());
+		SaveFile(enumsFolder, item.Name, this.GenerationEnvironment.ToString());
 		this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
 }
 #>

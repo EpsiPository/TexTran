@@ -1,0 +1,39 @@
+﻿<#
+var contextName = "TexTranContext";
+var regExFilter = "(?<=src).+$";
+
+var entitiesPath = @"\TexTran.Data.Abstractions\Entities";
+var entityBasePath = @"\TexTran.Data.Abstractions\Entities\Base";
+var enumPath = @"\TexTran.Data.Abstractions\Enums";
+var contextPath = @"\TexTran.Data.Access\Context";
+var repositoryPath = @"\TexTran.Data.Access\Repositories";
+var configurationPath = @"\TexTran.Data.Access\Configurations";
+var interfacePath = @"\TexTran.Data.Abstractions\Interfaces";
+var modelPath = @"\TexTran.Data.Access\Repositories";
+
+var directory = Path.GetDirectoryName(this.Host.TemplateFile);
+
+var entitiesFolder = Regex.Replace(directory, regExFilter, entitiesPath);
+var entityBaseFolder = Regex.Replace(directory, regExFilter, entityBasePath);
+var enumsFolder = Regex.Replace(directory, regExFilter, enumPath);
+var contextFolder = Regex.Replace(directory, regExFilter, contextPath);
+var repositoryFolder = Regex.Replace(directory, regExFilter, repositoryPath);
+var configurationsFolder = Regex.Replace(directory, regExFilter, configurationPath);
+var repositoryInterfaceFolder = Regex.Replace(directory, regExFilter, interfacePath);
+var modelFolder = Regex.Replace(directory, regExFilter, modelPath);
+
+var entityPaths = Directory.GetFiles(entitiesFolder);
+var entityNames = entityPaths.Select(x => Path.GetFileName(x));
+
+var configurationPaths = Directory.GetFiles(configurationsFolder);
+var configurations = configurationPaths.Select(x => Path.GetFileName(x));
+
+var entityDefinitions = this.Host.ResolvePath(@"..\Definitions\EntityDefinitions.txt");
+var entityLines = File.ReadLines(entityDefinitions).ToArray();
+
+var modelDefinitions = this.Host.ResolvePath(@"..\Definitions\ModelDefinitions.txt");
+var modelLines = File.ReadLines(modelDefinitions).ToArray();
+
+string enumsDefinitions = this.Host.ResolvePath(@"..\Definitions\EnumDefinitions.txt");
+var enumLines = File.ReadLines(enumsDefinitions).ToArray();
+#>

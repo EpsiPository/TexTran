@@ -6,6 +6,9 @@ using TextTran.Transformations.Enums;
 	
 namespace TexTran.Data.Abstractions.Entities
 {
+	/// <summery>
+	/// Description goes here
+	/// </summary>");
 	public class User : BaseEntity
 	{
 			public string FirstName  { get; set; }
@@ -19,6 +22,8 @@ namespace TexTran.Data.Abstractions.Entities
 		public Gender Gender { get; set; }
 
 		public Group Group  { get; set; }
+
+		public int? NullableNumber  { get; set; }
 
 	}
 }

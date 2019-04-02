@@ -40,7 +40,7 @@ namespace TexTran.Data.Abstractions.Entities
 	builder.AppendLine(@"	}
 }");
 
-	WriteToFolder(modelFolder, model.Name, builder.ToString());
+	SaveFile(modelFolder, model.Name, builder.ToString());
 }
 }
 #>

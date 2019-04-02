@@ -68,7 +68,7 @@ foreach (var item in entityNames)
 stringBuilder.AppendLine(@"	}
 }");
 
-WriteToFolder(contextFolder, dbContextName, stringBuilder.ToString());
+SaveFile(contextFolder, dbContextName, stringBuilder.ToString());
 }
 
 

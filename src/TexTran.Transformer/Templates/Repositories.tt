@@ -51,8 +51,8 @@ namespace TexTran.Data.Access.Repositories
 	}
 }
 <#
-WriteToFolder(repositoryFolder, entityName + "Repository" , this.GenerationEnvironment.ToString());
-WriteToFolder(repositoryInterfaceFolder, "I" + entityName + "Repository", BuildInterface(entityName));
+SaveFile(repositoryFolder, entityName + "Repository" , this.GenerationEnvironment.ToString());
+SaveFile(repositoryInterfaceFolder, "I" + entityName + "Repository", BuildInterface(entityName));
 this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
 	}
 }
