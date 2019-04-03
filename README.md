@@ -2,16 +2,15 @@
 
 TexTran is a project that contains `T4 templates` to generate classes from simple definitions. I started this project to discover what `T4` has to offer and how I can use this in future projects. 
 
-## Technologies
+## Frameworks
 
 - .NET Core 2.2
-- Entity Framework Core 2 + FluentAPI
-- AutoT4 1.2.2
+- Entity Framework Core 2 
+- AutoT4 1.2.2  (VS2017 only)
 
 ## Usage
 
-Define classes in the definition files, and build the solution.
-If you want to use the `.tt` files in your project, adjust the `TransformSetup.tt` file to your needs.
+Define classes in the definition files, and build the solution (VS2017 only). For Visual Studio 2019 choose `Build - Transform All T4 Templates`.
 
 ### Entity example
 
