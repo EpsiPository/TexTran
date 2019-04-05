@@ -6,11 +6,11 @@ TexTran is a project that contains `T4 templates` to generate classes from simpl
 
 - .NET Core 2.2
 - Entity Framework Core 2 
-- AutoT4 1.2.2  (VS2017 only)
+- AutoT4 1.2.2 (VS2017 only) or TTExecuter (VS2017&2019)
 
 ## Usage
 
-Define classes in the definition files, and build the solution (VS2017 only). For Visual Studio 2019 choose `Build - Transform All T4 Templates`.
+Define classes in the definition files, and build the solution choose `Build - Transform All T4 Templates`.
 
 ### Entity example
 
