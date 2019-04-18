@@ -6,7 +6,7 @@ TexTran is a project that contains `T4 templates` to generate classes from simpl
 
 - .NET Core 2.2
 - Entity Framework Core 2 
-- AutoT4 1.2.2 (VS2017 only) or TTExecuter (VS2017&2019)
+- TTExecuter 1.9
 
 ## Usage
 
@@ -151,8 +151,3 @@ After adding more content to the definition files, just run `Build > Transform a
 
 You can set the DbContextName in `TexTran.Transformer.TransformDirectives.ttinclude`.
 Add your entities to the definition files, add `EntityTypeConfiguration<Entity>` and run a `Add-Migration Initial` command in the Package Manager Console followed by `Update-Database` to create the database. Don't forget to create a migration every time you change the database model.
-
-## TO DO
-
-- Implement AutoMapper + auto generate mappings
-- Complete the Service layer
