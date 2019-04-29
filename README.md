@@ -7,10 +7,12 @@ TexTran is a project that contains `T4 templates` to generate classes from simpl
 - .NET Core 2.2
 - Entity Framework Core 2 
 - TTExecuter 1.9
+- AutoMapper 8.1.0
 
 ## Usage
 
 Define classes in the definition files, and build the solution choose `Build - Transform All T4 Templates`.
+Add `ViewModels` to the project and a `AutoMapper Mapping Profile` is also created for the `ViewModel` and the matching `Entity`.
 
 ### Entity example
 
