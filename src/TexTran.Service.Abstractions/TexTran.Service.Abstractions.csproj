@@ -5,7 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Mapper\Profiles\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TexTran.Data.Abstractions\TexTran.Data.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,51 @@
+﻿<#@ 
+include file="TransformManager.ttinclude" #>
+<#
+List<EntityDefinition> entities = GenerateEntities(entityLines); 
+List<string> viewModels = new List<string>();
+foreach (string fileName in Directory.GetFiles(viewModelFolder, "*.cs").Select(Path.GetFileName))
+{
+	viewModels.Add(fileName);
+}
+#>
+// This file is auto generated. Changes to this file will be lost!
+using System;
+using TexTran.Service.Abstractions.ViewModels;
+using AutoMapper;
+using TexTran.Data.Abstractions.Entities;
+
+namespace TexTran.Service.Abstractions.Mapper.Profiles
+{
+	public class ModelToViewModelMapping: Profile
+	{
+		public ModelToViewModelMapping()
+		{
+<#
+	foreach (var entity in entities)
+	{
+		foreach (var viewModel in viewModels)
+		{
+			string viewModelName = "";
+			var viewModelMatch = Regex.Match(viewModel, @"(?<modelName>.+?(?=ViewModel))");
+			
+			if(viewModelMatch.Success)
+			{
+				viewModelName = viewModelMatch.Groups["modelName"].Value;
+			}
+
+			if(entity.Name.Trim() == viewModelName)
+			{
+#>
+			CreateMap<<#= entity.Name.Trim() #>, <#= viewModelName #>>();
+<#		
+			}
+		}
+	}
+#>
+		}
+	}
+}
+<#
+	SaveFile(mappingProfileFolder, "ModelToViewModelMappingProfile", this.GenerationEnvironment.ToString());
+	this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+#>

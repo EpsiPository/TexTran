@@ -10,6 +10,8 @@ var repositoryPath = @"\TexTran.Data.Access\Repositories";
 var configurationPath = @"\TexTran.Data.Access\Configurations";
 var interfacePath = @"\TexTran.Data.Abstractions\Interfaces";
 var modelPath = @"\TexTran.Service.Abstractions\Models";
+var viewModelPath = @"\TexTran.Service.Abstractions\ViewModels";
+var mappingProfilePath = @"\TexTran.Service.Abstractions\Mapper\Profiles";
 
 var directory = Path.GetDirectoryName(this.Host.TemplateFile);
 
@@ -21,6 +23,8 @@ var repositoryFolder = Regex.Replace(directory, regExFilter, repositoryPath);
 var configurationsFolder = Regex.Replace(directory, regExFilter, configurationPath);
 var repositoryInterfaceFolder = Regex.Replace(directory, regExFilter, interfacePath);
 var modelFolder = Regex.Replace(directory, regExFilter, modelPath);
+var viewModelFolder = Regex.Replace(directory, regExFilter, viewModelPath);
+var mappingProfileFolder = Regex.Replace(directory, regExFilter, mappingProfilePath);
 
 var entityPaths = Directory.GetFiles(entitiesFolder);
 var entityNames = entityPaths.Select(x => Path.GetFileName(x));
