@@ -32,12 +32,12 @@ var entityNames = entityPaths.Select(x => Path.GetFileName(x));
 var configurationPaths = Directory.GetFiles(configurationsFolder);
 var configurations = configurationPaths.Select(x => Path.GetFileName(x));
 
-var entityDefinitions = this.Host.ResolvePath(@"..\Definitions\EntityDefinitions.txt");
+var entityDefinitions = this.Host.ResolvePath(@"..\Definitions\Entities.definition");
 var entityLines = File.ReadLines(entityDefinitions).ToArray();
 
-var modelDefinitions = this.Host.ResolvePath(@"..\Definitions\ModelDefinitions.txt");
+var modelDefinitions = this.Host.ResolvePath(@"..\Definitions\Models.definition");
 var modelLines = File.ReadLines(modelDefinitions).ToArray();
 
-string enumsDefinitions = this.Host.ResolvePath(@"..\Definitions\EnumDefinitions.txt");
+string enumsDefinitions = this.Host.ResolvePath(@"..\Definitions\Enums.definition");
 var enumLines = File.ReadLines(enumsDefinitions).ToArray();
 #>

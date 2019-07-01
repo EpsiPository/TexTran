@@ -6,3 +6,7 @@
 Role
 	Member : 1
 	Admin : 2
+
+Animals
+	Dog : 1
+	Cat : 2
