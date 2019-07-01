@@ -16,7 +16,7 @@ Add `ViewModels` to the project and a `AutoMapper Mapping Profile` is also creat
 
 ### Entity example
 
-Add a definition for a entity to the definition file (`EntityDefinitions.txt`). Save the file, build the solution and following files are generated:
+Add a definition for a entity to the definition file (`Entities.definition`). Save the file, build the solution and following files are generated:
 - {Entity}.cs inside `TexTran.Data.Abstractions\Entities`
 - {Entity}Repository.cs inside `TexTran.Data.Access\Repositories`
 - I{Entity}Repository.cs inside `TexTran.Data.Abstractions\Interfaces`
